@@ -630,11 +630,11 @@ div.message > p::after {
 }
 
 @keyframes divineglint-animation {
-  0%{background-color: rgba(2,0,36,1)}
-  25%{background-color: rgba(187,210,210,1)}
-  50%{background-color: rgba(0,212,255,1)}
-  75%{background-color: rgba(187,210,210,1)}
-  100%{background-color: rgba(2,0,36,1)}
+  0%{background-color: rgba(2,0,36,1) box-shadow: 120px 80px 40px 20px #0ff}
+  25%{background-color: rgba(187,210,210,1) box-shadow: 120px 80px 40px 20px #0ff}
+  50%{background-color: rgba(0,212,255,1) box-shadow: 120px 80px 40px 20px #0ff}
+  75%{background-color: rgba(187,210,210,1) box-shadow: 120px 80px 40px 20px #0ff}
+  100%{background-color: rgba(2,0,36,1) box-shadow: 120px 80px 40px 20px #0ff}
 }
 
 ::-webkit-scrollbar {
