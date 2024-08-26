@@ -610,9 +610,9 @@ div.message > p::after {
   background: linear-gradient(270deg, #f06, #f79, #f06);
   background-size: 400% 400%;
 
-  -webkit-animation: specialglint-animation 1s infinite;
-  -moz-animation: specialglint-animation 1s infinite;
-  animation: specialglint-animation 1s infinite;
+  -webkit-animation: specialglint-animation 1s ease;
+  -moz-animation: specialglint-animation 1s ease;
+  animation: specialglint-animation 1s ease;
 }
 
 @keyframes specialglint-animation {
@@ -818,17 +818,17 @@ div.skeleton > div.lvl.dead {
   background: linear-gradient(#e66465, #9198e5);
   background-size: 190% 200%;
 
-  -webkit-animation: specialglint-animation 4s linear infinite;
-  -moz-animation: specialglint-animation 4s linear infinite;
-  animation: specialglint-animation 4s linear infinite;
+  -webkit-animation: specialglint-animation 10s ease-in infinite;
+  -moz-animation: specialglint-animation 10s ease-in infinite;
+  animation: specialglint-animation 10s ease-in infinite;
 }
 .inventory .item.divine {
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(187,210,210,1) 35%, rgba(0,212,255,1) 100%);
   background-size: 190% 200%;
 
-  -webkit-animation: specialglint-animation 4s linear infinite;
-  -moz-animation: specialglint-animation 4s linear infinite;
-  animation: specialglint-animation 4s linear infinite;
+  -webkit-animation: specialglint-animation 10s ease-in infinite;
+  -moz-animation: specialglint-animation 10s ease-in infinite;
+  animation: specialglint-animation 10s ease-in infinite;
 }
 .inventory .item.helmet .icon {
   background: url("images/helmet.png");
