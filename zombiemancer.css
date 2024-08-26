@@ -837,6 +837,7 @@ div.skeleton > div.lvl.dead {
   animation: ancientglint-animation 5s ease-in infinite;
 }
 .inventory .item.divine {
+  background-color: blue
   background-size: 190% 200%;
 
   -webkit-animation: divineglint-animation 5s ease infinite;
