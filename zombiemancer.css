@@ -824,7 +824,7 @@ div.skeleton > div.lvl.dead {
 }
 .inventory .item.divine {
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(187,210,210,1) 35%, rgba(0,212,255,1) 100%);
-  background-size: 100% 200%;
+  background-size: 100% 300%;
 
   -webkit-animation: specialglint-animation 10s ease-in infinite;
   -moz-animation: specialglint-animation 10s ease-in infinite;
