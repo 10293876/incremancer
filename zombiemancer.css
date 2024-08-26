@@ -630,9 +630,11 @@ div.message > p::after {
 }
 
 @keyframes divineglint-animation {
-   0%{background-position:50% 0%}
-  50%{background-position:50% 100%}
-  100%{background-position:50% 0%} 
+   0%{background-size:0% 0%}
+  25%{background-size:25% 25%}
+  50%{background-size:50% 50%}
+  75%{background-size:75% 75%}
+  100%{background-size:100% 100%} 
 }
 
 ::-webkit-scrollbar {
