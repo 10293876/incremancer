@@ -606,7 +606,11 @@ div.message > p::after {
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
 }
-
+@keyframes specialgear-animation {
+    0% { background-position: 50% 0%; }
+    50% { background-position: 50% 100%; }
+    100% { background-position: 50% 0%; }
+}
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -802,17 +806,17 @@ div.skeleton > div.lvl.dead {
   background: linear-gradient(270deg, #e66465, #9198e5);
   background-size: 190% 200%;
 
-  -webkit-animation: levelup-animation 4s linear infinite;
-  -moz-animation: levelup-animation 4s linear infinite;
-  animation: levelup-animation 4s linear infinite;
+  -webkit-animation: specialgear-animation 4s ease linear infinite;
+  -moz-animation: specialgear-animation 4s ease infinite;
+  animation: specialgear-animation 4s ease infinite;
 }
 .inventory .item.divine {
   background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(187,210,210,1) 35%, rgba(0,212,255,1) 100%);
   background-size: 190% 200%;
 
-  -webkit-animation: levelup-animation 4s linear infinite;
-  -moz-animation: levelup-animation 4s linear infinite;
-  animation: levelup-animation 4s linear infinite;
+  -webkit-animation: specialgear-animation 4s ease linear infinite;
+  -moz-animation: specialgear-animation 4s ease infinite;
+  animation: specialgear-animation 4s ease infinite;
 }
 .inventory .item.helmet .icon {
   background: url("images/helmet.png");
