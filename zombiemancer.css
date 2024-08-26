@@ -606,7 +606,7 @@ div.message > p::after {
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
 }
-.specialglint {
+.ancientglint {
   background: linear-gradient(270deg, rgba(0,0,0,0) 40%, #ffee10 50%, rgba(0,0,0,0) 60%);
   background-size: 400% 400%;
 
@@ -615,12 +615,25 @@ div.message > p::after {
   animation: specialglint-animation 2s ease;
 }
 
-@keyframes specialglint-animation {
+@keyframes ancientglint-animation {
    0%{background-position:0% 0%}
   50%{background-position:100% 100%}
   100%{background-position:0% 0%} 
 }
+.divineglint {
+  background: linear-gradient(270deg, rgba(0,0,0,0) 40%, #ffee10 50%, rgba(0,0,0,0) 60%);
+  background-size: 400% 400%;
 
+  -webkit-animation: specialglint-animation 2s ease;
+  -moz-animation: specialglint-animation 2s ease;
+  animation: specialglint-animation 2s ease;
+}
+
+@keyframes divineglint-animation {
+   0%{background-position:0% 0%}
+  50%{background-position:100% 100%}
+  100%{background-position:0% 0%} 
+}
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -817,17 +830,17 @@ div.skeleton > div.lvl.dead {
   background: linear-gradient(#e66465, #9198e5);
   background-size: 190% 200%;
 
-  -webkit-animation: specialglint-animation 5s ease-in infinite;
-  -moz-animation: specialglint-animation 5s ease-in infinite;
-  animation: specialglint-animation 5s ease-in infinite;
+  -webkit-animation: ancientglint-animation 5s ease-in infinite;
+  -moz-animation: ancientglint-animation 5s ease-in infinite;
+  animation: ancientglint-animation 5s ease-in infinite;
 }
 .inventory .item.divine {
-  background: radial-gradient(270deg, rgba(2,0,36,1) 0%, rgba(187,210,210,1) 40%, rgba(0,212,255,1) 60%, rgba(187,210,210,1) 100%);
+  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(187,210,210,1) 40%, rgba(0,212,255,1) 60%, rgba(187,210,210,1) 100%);
   background-size: 190% 200%;
 
-  -webkit-animation: specialglint-animation 5s ease infinite;
-  -moz-animation: specialglint-animation 5s ease infinite;
-  animation: specialglint-animation 5s ease infinite;
+  -webkit-animation: divineglint-animation 5s ease infinite;
+  -moz-animation: divineglint-animation 5s ease infinite;
+  animation: divineglint-animation 5s ease infinite;
 }
 .inventory .item.helmet .icon {
   background: url("images/helmet.png");
