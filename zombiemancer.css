@@ -633,7 +633,7 @@ div.message > p::after {
   0%   {background-color: rgba(2,0,36,1);}
   25%  {background-color: rgba(187,210,210,1);}
   50%  {background-color: rgba(0,212,255,1);}
-  75% {background-color: blue;}
+  75% {background-color: rgba(187,210,210,1);}
   100% {background-color: rgba(2,0,36,1);}
 }
 
@@ -840,9 +840,9 @@ div.skeleton > div.lvl.dead {
   background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 50%, rgba(0,212,255,1) 100%);
   background-size: 190% 200%;
 
-  -webkit-animation: divineglint-animation 5s linear infinite;
-  -moz-animation: divineglint-animation 5s linear infinite;
-  animation: divineglint-animation 5s linear infinite;
+  -webkit-animation: divineglint-animation 5s ease infinite;
+  -moz-animation: divineglint-animation 5s ease infinite;
+  animation: divineglint-animation 5s ease infinite;
 }
 .inventory .item.helmet .icon {
   background: url("images/helmet.png");
