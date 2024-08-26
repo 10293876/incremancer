@@ -630,9 +630,9 @@ div.message > p::after {
 }
 
 @keyframes divineglint-animation {
-   0%{background-position:0% 0%}
-  50%{background-position:100% 100%}
-  100%{background-position:0% 0%} 
+   0%{background-position:50% 0%}
+  50%{background-position:50% 100%}
+  100%{background-position:50% 0%} 
 }
 
 ::-webkit-scrollbar {
@@ -835,7 +835,7 @@ div.skeleton > div.lvl.dead {
   animation: ancientglint-animation 5s ease-in infinite;
 }
 .inventory .item.divine {
-  background: radial-gradient(circle, rgba(2,0,36,1), rgba(187,210,210,1), rgba(0,212,255,1), rgba(187,210,210,1));
+  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(187,210,210,1) 50%, rgba(0,212,255,1) 100%);
   background-size: 190% 200%;
 
   -webkit-animation: divineglint-animation 5s ease infinite;
