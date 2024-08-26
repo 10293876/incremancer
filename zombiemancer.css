@@ -607,7 +607,7 @@ div.message > p::after {
   100%{background-position:0% 50%}
 }
 .specialglint {
-  background: linear-gradient(90deg, #f06, #f79, #f06);
+  background: linear-gradient(270deg, #f06, #f79, #f06);
   background-size: 400% 400%;
 
   -webkit-animation: specialglint-animation 2s ease;
@@ -616,27 +616,33 @@ div.message > p::after {
 }
 
 @keyframes specialglint-animation {
-  0% {
-        background-position: 50% 50%;
+    0% {
+        background-position: 0% 0%;
+        transform: scale(1);
         box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
     }
     25% {
         background-position: 50% 50%;
+        transform: scale(1.05);
         box-shadow: 0 0 20px rgba(187, 210, 210, 0.75);
     }
     50% {
-        background-position: 50% 50%;
+        background-position: 100% 100%;
+        transform: scale(1.1);
         box-shadow: 0 0 30px rgba(212, 255, 255, 1);
     }
     75% {
         background-position: 50% 50%;
+        transform: scale(1.05);
         box-shadow: 0 0 20px rgba(187, 210, 210, 0.75);
     }
     100% {
-        background-position: 50% 50%;
+        background-position: 0% 0%;
+        transform: scale(1);
         box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
     }
 }
+
 
 ::-webkit-scrollbar {
   width: 5px;
