@@ -617,7 +617,7 @@ div.message > p::after {
 
 @keyframes specialglint-animation {
   0% {
-        background-position: 0% 0%;
+        background-position: 50% 50%;
         box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
     }
     25% {
@@ -625,7 +625,7 @@ div.message > p::after {
         box-shadow: 0 0 20px rgba(187, 210, 210, 0.75);
     }
     50% {
-        background-position: 100% 100%;
+        background-position: 50% 50%;
         box-shadow: 0 0 30px rgba(212, 255, 255, 1);
     }
     75% {
@@ -633,7 +633,7 @@ div.message > p::after {
         box-shadow: 0 0 20px rgba(187, 210, 210, 0.75);
     }
     100% {
-        background-position: 0% 0%;
+        background-position: 50% 50%;
         box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
     }
 }
