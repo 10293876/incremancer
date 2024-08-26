@@ -633,7 +633,7 @@ div.message > p::after {
   0%   {background-color: rgba(2,0,36,1);}
   25%  {background-color: rgba(187,210,210,1);}
   50%  {background-color: rgba(0,212,255,1);}
-  75% {background-color: rgba(187,210,210,1);}
+  75% {background-color: blue;}
   100% {background-color: rgba(2,0,36,1);}
 }
 
@@ -837,7 +837,7 @@ div.skeleton > div.lvl.dead {
   animation: ancientglint-animation 5s ease-in infinite;
 }
 .inventory .item.divine {
-  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(187,210,210,1) 25%, rgba(0,212,255,1) 50%, rgba(187,210,210,1) 75%, rgba(2,0,36,1) 100%);
+  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 50%, rgba(0,212,255,1) 100%);
   background-size: 190% 200%;
 
   -webkit-animation: divineglint-animation 5s linear infinite;
