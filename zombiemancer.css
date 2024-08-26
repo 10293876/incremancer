@@ -807,7 +807,7 @@ div.skeleton > div.lvl.dead {
   animation: levelup-animation 4s linear infinite;
 }
 .inventory .item.divine {
-  background: linear-gradient(rgba(2,0,36,1) 0%, rgba(187,210,210,1) 35%, rgba(0,212,255,1) 100%);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(187,210,210,1) 35%, rgba(0,212,255,1) 100%);
   background-size: 190% 200%;
 
   -webkit-animation: levelup-animation 4s linear infinite;
