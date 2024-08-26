@@ -607,7 +607,7 @@ div.message > p::after {
   100%{background-position:0% 50%}
 }
 .specialglint {
-  background: linear-gradient(270deg, rgba(0,0,0,0) 25%, #ffee10 50%, rgba(0,0,0,0) 75%);
+  background: linear-gradient(270deg, rgba(0,0,0,0) 40%, #ffee10 50%, rgba(0,0,0,0) 60%);
   background-size: 400% 400%;
 
   -webkit-animation: specialglint-animation 2s ease;
@@ -616,9 +616,9 @@ div.message > p::after {
 }
 
 @keyframes specialglint-animation {
-   0%{background-position:50% 0%}
-  50%{background-position:50% 100%}
-  100%{background-position:50% 0%} 
+   0%{background-position:0% 0%}
+  50%{background-position:0% 100%}
+  100%{background-position:0% 0%} 
 }
 
 
