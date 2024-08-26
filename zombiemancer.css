@@ -630,11 +630,17 @@ div.message > p::after {
 }
 
 @keyframes divineglint-animation {
-  0%{background-color: rgba(2,0,36,1) box-shadow: 120px 80px 40px 20px #0ff}
-  25%{background-color: rgba(187,210,210,1) box-shadow: 120px 80px 40px 20px #0ff}
-  50%{background-color: rgba(0,212,255,1) box-shadow: 120px 80px 40px 20px #0ff}
-  75%{background-color: rgba(187,210,210,1) box-shadow: 120px 80px 40px 20px #0ff}
-  100%{background-color: rgba(2,0,36,1) box-shadow: 120px 80px 40px 20px #0ff}
+  0%{
+    background-color: rgba(2,0,36,1) 
+    box-shadow: 0 0 80px 40px rgba(255, 255, 255, 0.6)}
+  25%{background-color: rgba(187,210,210,1) 
+    box-shadow: 0 0 80px 40px rgba(255, 255, 255, 0.6)}
+  50%{background-color: rgba(0,212,255,1) 
+    box-shadow: 0 0 80px 40px rgba(255, 255, 255, 0.6)}
+  75%{background-color: rgba(187,210,210,1) 
+    box-shadow: 0 0 80px 40px rgba(255, 255, 255, 0.6)}
+  100%{background-color: rgba(2,0,36,1) 
+    box-shadow: 0 0 80px 40px rgba(255, 255, 255, 0.6)}
 }
 
 ::-webkit-scrollbar {
