@@ -607,7 +607,7 @@ div.message > p::after {
   100%{background-position:0% 50%}
 }
 .specialglint {
-  background: linear-gradient(270deg, #f06, #f79, #f06);
+  background: linear-gradient(270deg, rgba(0,0,0,0) 25%, #ffee10 50%, rgba(0,0,0,0) 75%);
   background-size: 400% 400%;
 
   -webkit-animation: specialglint-animation 2s ease;
@@ -618,27 +618,22 @@ div.message > p::after {
 @keyframes specialglint-animation {
     0% {
         background-position: 0% 0%;
-        transform: scale(1);
         box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
     }
     25% {
         background-position: 50% 50%;
-        transform: scale(1.05);
         box-shadow: 0 0 20px rgba(187, 210, 210, 0.75);
     }
     50% {
         background-position: 100% 100%;
-        transform: scale(1.1);
         box-shadow: 0 0 30px rgba(212, 255, 255, 1);
     }
     75% {
         background-position: 50% 50%;
-        transform: scale(1.05);
         box-shadow: 0 0 20px rgba(187, 210, 210, 0.75);
     }
     100% {
         background-position: 0% 0%;
-        transform: scale(1);
         box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
     }
 }
@@ -847,9 +842,9 @@ div.skeleton > div.lvl.dead {
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(187,210,210,1) 35%, rgba(0,212,255,1) 100%);
   background-size: 100% 300%;
 
-  -webkit-animation: specialglint-animation 10s ease-in infinite;
-  -moz-animation: specialglint-animation 10s ease-in infinite;
-  animation: specialglint-animation 10s ease-in infinite;
+  -webkit-animation: specialglint-animation 5s ease-in infinite;
+  -moz-animation: specialglint-animation 5s ease-in infinite;
+  animation: specialglint-animation 5s ease-in infinite;
 }
 .inventory .item.helmet .icon {
   background: url("images/helmet.png");
