@@ -1051,7 +1051,7 @@ var Incremancer;
                 this.creatureLimit = 1, 
                 this.harpySpeed = 75, 
                 this.tankBuster = !1, 
-                this.biomassrisefromdead = !1,
+                this.biomassrisefromdead = 0,
                 this.harpyBombs = 1, 
                 this.stats = null, 
                 this.runicSyphon = {
@@ -1200,7 +1200,7 @@ var Incremancer;
                 this.bulletproofChance = 0, 
                 this.gigazombies = !1, 
                 this.harpySpeed = 75, 
-                this.biomassrisefromdead = !1,
+                this.biomassrisefromdead = 0,
                 this.tankBuster = !1, 
                 this.harpyBombs = 1
         }
@@ -1794,7 +1794,7 @@ var Incremancer;
                                  new le(61, "Big Boned", this.types.golemHealthPC, this.costs.parts, 1e3, 1.31, .02, 0, "Your golems gain +2% health with each rank of Big Boned.", null, 220),
                                  new le(62, "Hybrid Strength", this.types.HstrengthDmgPC, this.costs.parts, 1e3, 1.3, .01, 0, "Animating Golem parts fused with zombie flesh creates a terrifyingly strong Hybrid. Your zombies gain +1% damage with each rank of Hybrid Strength.", null, 301),
                                  new le(63, "Hybrid Shell", this.types.HshellHealthPC, this.costs.parts, 1e3, 1.31, .01, 0, "Golem armor shell provides extra protection for your fleshy zombies. Your zombies gain +1% health with each rank of Hybrid Shell.", null, 301),
-                                 new le(64, "Biomass Monsters", this.types.biomassrisefromdead, this.costs.blood, 1e14, 1.2, 1, 1, "The flesh and blood of countless humans merge together to create this horrifying amalgamation. Biomass monsters will now have a 1% chance to spawn from human corpses if you have at least 200 zombies.", null, 301),
+                                 new le(64, "Biomass Monsters", this.types.biomassrisefromdead, this.costs.blood, 1e14, 1.4, .1, 10, "The flesh and blood of countless humans merge together to create this horrifying amalgamation. Biomass monsters will now have a 1% chance to spawn from human corpses if you have at least 200 zombies.", null, 301),
                                  new le(65, "Advanced Cyrogenic Vats", this.types.CyroVatPC, this.costs.parts, 1e3, 1.4, .1, 0, "Cooling these Brains further makes them last much longer. Your brain storage increases +10% with each rank of Advanced Cyrogenic Vats.", null, 302),
                                  new le(66, "Golem Part Plague Vats", this.types.PlagueVatPC, this.costs.brains, 1e3, 1.35, .01, 0, "Using specialized Golem Parts allows for advancements in plague research. Plague Damage increases +1% with each rank of Golem Part Plague Vats.", null, 302),
                                  new le(67, "Cloning Replicator", this.types.CloningRep1PC, this.costs.parts, 1e12, 1.26, .05, 0, "Mass produced Cloning Replicators allows for much greater use out of each Brain obtained. Brain Income increases +5% with each rank of Cloning Replicator.", null, 303),
@@ -1875,7 +1875,7 @@ var Incremancer;
                     return void (this.gameModel.brainRecoverChance += e.effect * t);
                 case this.types.riseFromTheDeadChance:
                     return void (this.gameModel.riseFromTheDeadChance += e.effect * t);
-                 case this.types.biomassrisefromdead:
+                case this.types.biomassrisefromdead:
                     return void (this.gameModel.biomassrisefromdead += e.effect * t);
                 case this.types.infectedBite:
                     return void (this.gameModel.infectedBiteChance += e.effect * t);
@@ -1935,8 +1935,6 @@ var Incremancer;
                 case this.types.HshellHealthPC:
                     return void (this.gameModel.zombieHealthPCMod *= Math.pow(1 + e.effect, t)),
                                 (this.gameModel.HshellHealthPCMod *= Math.pow(1 + e.effect, t));
-                case this.types.biomassrisefromdead:
-                    return void (this.gameModel.biomassrisefromdead = !0);
                 case this.types.CyroVatPC:
                     return void (this.gameModel.brainsMax *= Math.pow(1 + e.effect, t)),
                                 (this.gameModel.CyroVatPCMod *= Math.pow(1 + e.effect, t));
@@ -2142,7 +2140,7 @@ var Incremancer;
                 case this.types.tankBuster:
                     return this.currentRank(e) > 0 ? "You have unlocked tank buster" : "You have yet to unlock tank buster";
                 case this.types.biomassrisefromdead:
-                    return this.currentRank(e) > 0 ? "You have unlocked biomass monsters" : "You have yet to unlock biomass monsters";
+                    return Math.round(100 * this.gameModel.biomassrisefromdead) + "% chance for human corpses to turn into biomass monsters";
                 case this.types.spikeDelay:
                     return "Current spike delay: " + (5 - this.currentRank(e)) + " seconds"
             }
