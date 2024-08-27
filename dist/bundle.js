@@ -2642,7 +2642,7 @@ var Incremancer;
             if (this.gameModel.currentState != this.gameModel.states.playingLevel) return;
             const t = [],
                 s = this.zombies.aliveZombies;
-                s = this.biomasses.aliveBiomasses
+                s = this.biomasses.aliveBiomasses;
             this.graveyardAttackers.length = 0;
             for (let i = 0; i < this.humans.length; i++) this.updateHuman(this.humans[i], e, s), this.humans[i].flags.dead || t.push(this.humans[i]);
             this.aliveHumans = t, this.gameModel.stats.human.count = this.aliveHumans.length, this.police.update(e, s), this.army.update(e, s), this.tanks.update(e, s), this.vipText && this.vipText.visible && (this.vipText.x = this.vipText.human.x, this.vipText.y = this.vipText.human.y + this.vipText.yOffset), this.gameModel.humanCount = this.aliveHumans.length
@@ -2881,7 +2881,7 @@ var Incremancer;
     }(pe || (pe = {}));
     class Te {
         constructor() {
-            if (this.maxWalkSpeed = 20, this.maxRunSpeed = 50, this.armymen = [], this.discardedArmymen = [], this.textures = [], this.aliveZombies = [], this.aliveBiomasses = [] this.armyPerLevel = .9, this.attackSpeed = 2, this.attackDamage = 20, this.attackDistance = 25, this.moveTargetDistance = 5, this.shootDistance = 130, this.visionDistance = 200, this.scaling = 2, this.shotsPerBurst = 3, this.droneStrikeTimer = 0, this.droneStrikeTime = 35, this.assaultStarted = !1, this.droneStrike = null, this.droneActive = !1, this.droneBlastRadius = 35, Te.instance) return Te.instance;
+            if (this.maxWalkSpeed = 20, this.maxRunSpeed = 50, this.armymen = [], this.discardedArmymen = [], this.textures = [], this.aliveZombies = [], this.aliveBiomasses = [], this.armyPerLevel = .9, this.attackSpeed = 2, this.attackDamage = 20, this.attackDistance = 25, this.moveTargetDistance = 5, this.shootDistance = 130, this.visionDistance = 200, this.scaling = 2, this.shotsPerBurst = 3, this.droneStrikeTimer = 0, this.droneStrikeTime = 35, this.assaultStarted = !1, this.droneStrike = null, this.droneActive = !1, this.droneBlastRadius = 35, Te.instance) return Te.instance;
             Te.instance = this
         }
         isExtraArmy() {
