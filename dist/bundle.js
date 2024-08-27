@@ -1935,7 +1935,7 @@ var Incremancer;
                 case this.types.HshellHealthPC:
                     return void (this.gameModel.zombieHealthPCMod *= Math.pow(1 + e.effect, t)),
                                 (this.gameModel.HshellHealthPCMod *= Math.pow(1 + e.effect, t));
-                 case this.types.biomassrisefromdead:
+                case this.types.biomassrisefromdead:
                     return void (this.gameModel.biomassrisefromdead = !0);
                 case this.types.CyroVatPC:
                     return void (this.gameModel.brainsMax *= Math.pow(1 + e.effect, t)),
