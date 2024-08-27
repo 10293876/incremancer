@@ -1009,7 +1009,6 @@ var Incremancer;
                 this.zombieHealth = 100, 
                 this.zombieHealthPCMod = 1, 
                 this.HshellHealthPCMod = 1, 
-                this.biomassPCMod = 1,
                 this.CyroVatPCMod = 1, 
                 this.PlagueVatPCMod = 1, 
                 this.CloningRep1PCMod = 1, 
@@ -2086,6 +2085,8 @@ var Incremancer;
                     return "Zombie Damage: " + Math.round(100 * this.gameModel.HstrengthDmgPCMod - 100) + "%";
                 case this.types.HshellHealthPC:
                     return "Zombie Health: " + Math.round(100 * this.gameModel.HshellHealthPCMod - 100) + "%";
+                case this.types.biomass:
+                    return this.currentRank(e) > 0 ? "You have unlocked biomass monsters" : "You have yet to unlock biomass monsters";
                 case this.types.CyroVatPC:
                     return "Brains Storage: " + Math.round(100 * this.gameModel.CyroVatPCMod - 100) + "%";
                 case this.types.PlagueVatPC:
@@ -2140,8 +2141,6 @@ var Incremancer;
                     return "Harpy bombs: " + n(this.gameModel.harpyBombs);
                 case this.types.tankBuster:
                     return this.currentRank(e) > 0 ? "You have unlocked tank buster" : "You have yet to unlock tank buster";
-                case this.types.biomass:
-                    return this.currentRank(e) > 0 ? "You have unlocked biomass monsters" : "You have yet to unlock biomass monsters";
                 case this.types.spikeDelay:
                     return "Current spike delay: " + (5 - this.currentRank(e)) + " seconds"
             }
@@ -5004,8 +5003,6 @@ var Incremancer;
                     return "+" + e.effect + " harpy bombs";
                 case h.types.tankBuster:
                     return "Anti tank harpies";
-                case h.types.biomass:
-                    return "Biomass monster";
                 case h.types.spikeDelay:
                     return "-20% spike delay"
             }
