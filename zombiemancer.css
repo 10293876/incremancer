@@ -856,9 +856,9 @@ div.skeleton > div.lvl.dead {
   background-color: blue;
   background-size: 190% 200%;
 
-  -webkit-animation: divineglint-animation 5s ease infinite;
-  -moz-animation: divineglint-animation 5s ease infinite;
-  animation: divineglint-animation 5s ease infinite;
+  -webkit-animation: divineglint-animation 8s ease infinite;
+  -moz-animation: divineglint-animation 8s ease infinite;
+  animation: divineglint-animation 8s ease infinite;
 }
 .inventory .item.helmet .icon {
   background: url("images/helmet.png");
