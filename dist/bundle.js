@@ -285,7 +285,7 @@ var Incremancer;
     }
     class q {
         constructor() {
-            if (this.cooldownReduction = 0, this.timeExtension = 0, this.costReduction = 0, this.skeleton = new Xe, this.zombies = new Ae, this.humans = new Se, this.spellMap = new Map, this.spells = [new W(1, "Time Warp", "Speed up the flow of time for 30 seconds", "", 90, 30, 0, 
+            if (this.cooldownReduction = 0, this.timeExtension = 0, this.costReduction = 0, this.skeleton = new Xe, this.zombies = new Ae, this.biomasses = new Ae, this.humans = new Se, this.spellMap = new Map, this.spells = [new W(1, "Time Warp", "Speed up the flow of time for 30 seconds", "", 90, 30, 0, 
                 (function () {
                 ne.getInstance().gameSpeed = 2
             }), (function () {
@@ -1007,6 +1007,9 @@ var Incremancer;
                 this.brainsPCMod = 1, 
                 this.brainsStorePCMod = 1, 
                 this.zombieHealth = 100, 
+                this.biomassHealth = 100000
+                this.biomassDamage = 100000
+                this.biomassSpeed = 10
                 this.zombieHealthPCMod = 1, 
                 this.HshellHealthPCMod = 1, 
                 this.CyroVatPCMod = 1, 
@@ -1035,6 +1038,7 @@ var Incremancer;
                 this.plagueDmgReduction = 0, 
                 this.brainRecoverChance = 0, 
                 this.riseFromTheDeadChance = 0, 
+                this.riseFromTheDeadChance2 = 0,
                 this.infectedBiteChance = 0, 
                 this.infectedBlastChance = 0, 
                 this.spitDistance = 0, 
@@ -1140,7 +1144,7 @@ var Incremancer;
             }
         }
         static getInstance() {
-            return ne.instance || (ne.instance = new ne, ne.instance.particles = new Qe, ne.instance.trophies = new de, ne.instance.bones = new tt, ne.instance.creatureFactory = new ae, ne.instance.creatures = new Ue, ne.instance.boneCollectors = new Ve, ne.instance.graveyard = new Oe, ne.instance.spells = new q, ne.instance.partFactory = new se, ne.instance.skeleton = new Xe, ne.instance.upgrades = new oe, ne.instance.zombies = new Ae, ne.instance.humans = new Se, ne.instance.police = new ke, ne.instance.army = new Te), ne.instance
+            return ne.instance || (ne.instance = new ne, ne.instance.particles = new Qe, ne.instance.trophies = new de, ne.instance.bones = new tt, ne.instance.creatureFactory = new ae, ne.instance.creatures = new Ue, ne.instance.boneCollectors = new Ve, ne.instance.graveyard = new Oe, ne.instance.spells = new q, ne.instance.partFactory = new se, ne.instance.skeleton = new Xe, ne.instance.upgrades = new oe, ne.instance.zombies = new Ae, ne.instance.biomassm = new Ae, ne.instance.humans = new Se, ne.instance.police = new ke, ne.instance.army = new Te), ne.instance
         }
         resetToBaseStats() {
             this.energyRate = this.baseStats.energyRate, 
@@ -1156,6 +1160,7 @@ var Incremancer;
                 this.zombieCages = 0, 
                 this.brainRecoverChance = 0, 
                 this.riseFromTheDeadChance = 0, 
+                this.riseFromTheDeadChance2 = 0,
                 this.infectedBiteChance = 0, 
                 this.infectedBlastChance = 0, 
                 this.construction = this.baseStats.construction, 
@@ -1515,6 +1520,7 @@ var Incremancer;
                 brainsCap: "brainsCap",
                 brainRecoverChance: "brainRecoverChance",
                 riseFromTheDeadChance: "riseFromTheDeadChance",
+                riseFromTheDeadChance2: "riseFromTheDeadChance2",
                 boneCollectorCapacity: "boneCollectorCapacity",
                 construction: "construction",
                 infectedBite: "infectedBite",
@@ -1541,6 +1547,8 @@ var Incremancer;
                 bonesGainPC: "bonesGainPC",
                 partsGainPC: "partsGainPC",
                 zombieDmgPC: "zombieDmgPC",
+                biomassDmgPC: "biomassDmgPC",
+                biomassHealthPC: "biomassHealthPC",
                 zombieHealthPC: "zombieHealthPC",
                 HstrengthDmgPC: "HstrengthDmgPC",
                 HshellHealthPC: "HshellHealthPC",
@@ -1794,7 +1802,7 @@ var Incremancer;
                                  new le(61, "Big Boned", this.types.golemHealthPC, this.costs.parts, 1e3, 1.31, .02, 0, "Your golems gain +2% health with each rank of Big Boned.", null, 220),
                                  new le(62, "Hybrid Strength", this.types.HstrengthDmgPC, this.costs.parts, 1e3, 1.3, .01, 0, "Animating Golem parts fused with zombie flesh creates a terrifyingly strong Hybrid. Your zombies gain +1% damage with each rank of Hybrid Strength.", null, 301),
                                  new le(63, "Hybrid Shell", this.types.HshellHealthPC, this.costs.parts, 1e3, 1.31, .01, 0, "Golem armor shell provides extra protection for your fleshy zombies. Your zombies gain +1% health with each rank of Hybrid Shell.", null, 301),
-                                 new le(64, "Biomass Monsters", this.types.biomass, this.costs.blood, 1e10, 1.2, 1, 1, "The flesh and blood of countless humans merge together to create this horrifying amalgamation. Biomass monsters will now have a 1% chance to spawn from human corpses if you have at least 200 zombies.", null, 301), 
+                                 new le(64, "Biomass Monsters", this.types.riseFromTheDeadChance2, this.costs.blood, 1e10, 1.2, 1, 1, "The flesh and blood of countless humans merge together to create this horrifying amalgamation. Biomass monsters will now have a 1% chance to spawn from human corpses if you have at least 200 zombies.", null, 301), 
                                  new le(65, "Advanced Cyrogenic Vats", this.types.CyroVatPC, this.costs.parts, 1e3, 1.4, .1, 0, "Cooling these Brains further makes them last much longer. Your brain storage increases +10% with each rank of Advanced Cyrogenic Vats.", null, 302),
                                  new le(66, "Golem Part Plague Vats", this.types.PlagueVatPC, this.costs.brains, 1e3, 1.35, .01, 0, "Using specialized Golem Parts allows for advancements in plague research. Plague Damage increases +1% with each rank of Golem Part Plague Vats.", null, 302),
                                  new le(67, "Cloning Replicator", this.types.CloningRep1PC, this.costs.parts, 1e12, 1.26, .05, 0, "Mass produced Cloning Replicators allows for much greater use out of each Brain obtained. Brain Income increases +5% with each rank of Cloning Replicator.", null, 303),
@@ -1875,6 +1883,8 @@ var Incremancer;
                     return void (this.gameModel.brainRecoverChance += e.effect * t);
                 case this.types.riseFromTheDeadChance:
                     return void (this.gameModel.riseFromTheDeadChance += e.effect * t);
+                case this.types.riseFromTheDeadChance2:
+                    return void (this.gameModel.riseFromTheDeadChance2 += e.effect * t);
                 case this.types.infectedBite:
                     return void (this.gameModel.infectedBiteChance += e.effect * t);
                 case this.types.infectedBlast:
@@ -2055,6 +2065,8 @@ var Incremancer;
                     return Math.round(100 * this.gameModel.brainRecoverChance) + "% chance to recover brain";
                 case this.types.riseFromTheDeadChance:
                     return Math.round(100 * this.gameModel.riseFromTheDeadChance) + "% chance for human corpses to turn into zombies";
+                case this.types.riseFromTheDeadChance2:
+                    return Math.round(100 * this.gameModel.riseFromTheDeadChance2) + "% chance for human corpses to turn into biomass monsters";
                 case this.types.infectedBite:
                     return Math.round(100 * this.gameModel.infectedBiteChance) + "% chance for zombies to infect their targets";
                 case this.types.infectedBlast:
@@ -2630,6 +2642,7 @@ var Incremancer;
             if (this.gameModel.currentState != this.gameModel.states.playingLevel) return;
             const t = [],
                 s = this.zombies.aliveZombies;
+                s = this.biomasses.aliveBiomasses
             this.graveyardAttackers.length = 0;
             for (let i = 0; i < this.humans.length; i++) this.updateHuman(this.humans[i], e, s), this.humans[i].flags.dead || t.push(this.humans[i]);
             this.aliveHumans = t, this.gameModel.stats.human.count = this.aliveHumans.length, this.police.update(e, s), this.army.update(e, s), this.tanks.update(e, s), this.vipText && this.vipText.visible && (this.vipText.x = this.vipText.human.x, this.vipText.y = this.vipText.human.y + this.vipText.yOffset), this.gameModel.humanCount = this.aliveHumans.length
@@ -2637,6 +2650,14 @@ var Incremancer;
         updateDeadHumanFading(e, t) {
             if (e.visible) {
                 if (e.alpha > .5 && e.alpha - this.fadeSpeed * t <= .5 && !e.flags.tank && Math.random() < this.gameModel.riseFromTheDeadChance) return this.zombies.createZombie(e.x, e.y, e.flags.dog), e.visible = !1, void g.removeChild(e);
+                e.alpha -= this.fadeSpeed * t, e.alpha < 0 && (e.visible = !1, g.removeChild(e))
+            }
+            if (e.visible) {
+                if (e.alpha > .5 && e.alpha - this.fadeSpeed * t <= .5 && !e.flags.tank && Math.random() < this.gameModel.riseFromTheDeadChance2) return this.biomasses.createBiomassM(e.x, e.y, e.flags.dog), e.visible = !1, void g.removeChild(e);
+                e.alpha -= this.fadeSpeed * t, e.alpha < 0 && (e.visible = !1, g.removeChild(e))
+            }
+            if (e.visible) {
+                if (e.alpha > .5 && e.alpha - this.fadeSpeed * t <= .5 && !e.flags.tank && Math.random() < this.gameModel.riseFromTheDeadChance2) return this.zombies.createZombie(e.x, e.y, e.flags.dog), e.visible = !1, void g.removeChild(e);
                 e.alpha -= this.fadeSpeed * t, e.alpha < 0 && (e.visible = !1, g.removeChild(e))
             }
         }
@@ -2738,7 +2759,7 @@ var Incremancer;
             this.attackDamage = Math.round(this.getMaxHealth() / 10)
         }
         populate() {
-            if (this.map = new ee, this.gameModel = ne.getInstance(), this.humans = new Se, this.exclamations = new it, this.zombies = new Ae, this.bullets = new rt, 0 == this.walkTexture.length) {
+            if (this.map = new ee, this.gameModel = ne.getInstance(), this.humans = new Se, this.exclamations = new it, this.zombies = new Ae, this.biomass = new Ae, this.bullets = new rt, 0 == this.walkTexture.length) {
                 for (let e = 0; e < 3; e++) this.walkTexture.push(PIXI.Texture.from("cop" + (e + 1) + ".png"));
                 this.deadTexture = [PIXI.Texture.from("cop4.png")];
                 for (let e = 0; e < 2; e++) this.dogTexture.push(PIXI.Texture.from("dog" + (e + 1) + ".png"));
@@ -2860,7 +2881,7 @@ var Incremancer;
     }(pe || (pe = {}));
     class Te {
         constructor() {
-            if (this.maxWalkSpeed = 20, this.maxRunSpeed = 50, this.armymen = [], this.discardedArmymen = [], this.textures = [], this.aliveZombies = [], this.armyPerLevel = .9, this.attackSpeed = 2, this.attackDamage = 20, this.attackDistance = 25, this.moveTargetDistance = 5, this.shootDistance = 130, this.visionDistance = 200, this.scaling = 2, this.shotsPerBurst = 3, this.droneStrikeTimer = 0, this.droneStrikeTime = 35, this.assaultStarted = !1, this.droneStrike = null, this.droneActive = !1, this.droneBlastRadius = 35, Te.instance) return Te.instance;
+            if (this.maxWalkSpeed = 20, this.maxRunSpeed = 50, this.armymen = [], this.discardedArmymen = [], this.textures = [], this.aliveZombies = [], this.aliveBiomasses = [] this.armyPerLevel = .9, this.attackSpeed = 2, this.attackDamage = 20, this.attackDistance = 25, this.moveTargetDistance = 5, this.shootDistance = 130, this.visionDistance = 200, this.scaling = 2, this.shotsPerBurst = 3, this.droneStrikeTimer = 0, this.droneStrikeTime = 35, this.assaultStarted = !1, this.droneStrike = null, this.droneActive = !1, this.droneBlastRadius = 35, Te.instance) return Te.instance;
             Te.instance = this
         }
         isExtraArmy() {
@@ -2901,7 +2922,7 @@ var Incremancer;
         }
         update(e, t) {
             let s = 0;
-            this.aliveZombies = t, this.droneActive && (this.droneStrikeTimer -= e);
+            this.aliveZombies = t, this.aliveBiomasses = t, this.droneActive && (this.droneStrikeTimer -= e);
             for (let i = 0; i < this.armymen.length; i++) this.updateArmy(this.armymen[i], e, t), this.armymen[i].flags.dead || (this.humans.aliveHumans.push(this.armymen[i]), this.armymen[i].attackingGraveyard && this.humans.graveyardAttackers.push(this.armymen[i]), s++);
             this.gameModel.stats.army.count = s, this.updateDroneStrike(e, t)
         }
@@ -2972,7 +2993,7 @@ var Incremancer;
             this.droneExplosion(this.droneStrike.target.x + 32 * (Math.random() - 1), this.droneStrike.target.y + 32 * (Math.random() - 1), e, 3 * this.attackDamage), this.droneStrike.timer = .3, this.droneStrike.bombsLeft--
         }
         droneExplosion(e, t, s, i) {
-            s || (s = this.aliveZombies), this.blasts.newDroneBlast(e, t);
+            s || (s = this.aliveZombies), (s = this.aliveBiomasses), this.blasts.newDroneBlast(e, t);
             for (let a = 0; a < s.length; a++) s[a].x > e - this.droneBlastRadius && s[a].x < e + this.droneBlastRadius && s[a].y > t - this.droneBlastRadius && s[a].y < t + this.droneBlastRadius && this.zombies.damageZombie(s[a], i, null)
         }
         updateDroneStrike(e, t) {
@@ -3004,7 +3025,7 @@ var Incremancer;
         }(me || (me = {}));
     class De {
         constructor() {
-            if (this.speed = 20, this.tanks = [], this.aliveTanks = [], this.attackDamage = 0, this.attackSpeed = 3, this.scaling = 3, this.moveTargetDistance = 20, this.shootDistance = 300, this.aliveZombies = null, De.instance) return De.instance;
+            if (this.speed = 20, this.tanks = [], this.aliveTanks = [], this.attackDamage = 0, this.attackSpeed = 3, this.scaling = 3, this.moveTargetDistance = 20, this.shootDistance = 300, this.aliveZombies = null, this.aliveBiomasses = null, De.instance) return De.instance;
             De.instance = this
         }
         getMaxTanks() {
@@ -3040,7 +3061,7 @@ var Incremancer;
             }
         }
         update(e, t) {
-            this.aliveZombies = t, this.aliveTanks = [];
+            this.aliveZombies = t, this.aliveBiomasses = t, this.aliveTanks = [];
             for (let s = 0; s < this.tanks.length; s++) this.updateTank(this.tanks[s], e, t), this.tanks[s].flags.dead || (this.humans.aliveHumans.push(this.tanks[s]), this.aliveTanks.push(this.tanks[s]), this.tanks[s].attackingGraveyard && this.humans.graveyardAttackers.push(this.tanks[s]))
         }
         updateTank(e, t, s) {
@@ -3138,7 +3159,11 @@ var Incremancer;
     }
     class Ae {
         constructor() {
-            if (this.zombies = [], this.discardedZombies = [], this.aliveZombies = [], this.aliveHumans = [], this.zombiePartition = [], this.scaling = 2, this.moveTargetDistance = 15, this.attackDistance = 15, this.attackSpeed = 3, this.targetDistance = 100, this.fadeSpeed = .1, this.refundChance = 0, this.currId = 1, this.scanTime = 3, this.textures = [], this.dogTexture = [], this.deadDogTexture = [], this.maxSpeed = 10, this.zombieCursor = null, this.zombieCursorText = null, this.zombieCursorScale = 3, this.mouseOutOfBounds = !1, this.burnTickTimer = 5, this.bloodpact = 1, this.bloodborn = 0, this.gigamutagen = 0, this.gigamutationTimer = 10, this.smokeTimer = .3, this.fastDistance = i, this.magnitude = t, this.detonate = !1, this.super = !1, this.reactionTime = 0, this.graveyardAttackers = [], this.spaceNeeded = 3, Ae.instance) return Ae.instance;
+            if (this.zombies = [], this.discardedZombies = [], this.aliveZombies = [], this.biomasses = [], this.discardedBiomass = [], this.aliveBiomasses = [] this.aliveHumans = [], this.zombiePartition = [], this.scaling = 2, this.moveTargetDistance = 15, this.attackDistance = 15, this.attackSpeed = 3, this.targetDistance = 100, this.fadeSpeed = .1, this.refundChance = 0, this.currId = 1, this.scanTime = 3, this.textures = [], this.dogTexture = [], this.deadDogTexture = [], this.maxSpeed = 10, this.zombieCursor = null, this.zombieCursorText = null, this.zombieCursorScale = 3, this.mouseOutOfBounds = !1, this.burnTickTimer = 5, this.bloodpact = 1, this.bloodborn = 0, this.gigamutagen = 0, this.gigamutationTimer = 10, this.smokeTimer = .3, this.fastDistance = i, this.magnitude = t, this.detonate = !1, this.super = !1, this.reactionTime = 0, this.graveyardAttackers = [], this.spaceNeeded = 3, Ae.instance) return Ae.instance;
+            Ae.instance = this
+        }
+        constructor() {
+            if (this.biomasses = [], this.discardedBiomass = [], this.aliveBiomasses = [], this.aliveHumans = [], this.zombiePartition = [], this.scaling = 2, this.moveTargetDistance = 15, this.attackDistance = 15, this.attackSpeed = 3, this.targetDistance = 100, this.fadeSpeed = .1, this.refundChance = 0, this.currId = 1, this.scanTime = 3, this.textures = [], this.dogTexture = [], this.deadDogTexture = [], this.maxSpeed = 10, this.zombieCursor = null, this.zombieCursorText = null, this.zombieCursorScale = 3, this.mouseOutOfBounds = !1, this.burnTickTimer = 5, this.bloodpact = 1, this.bloodborn = 0, this.gigamutagen = 0, this.gigamutationTimer = 10, this.smokeTimer = .3, this.fastDistance = i, this.magnitude = t, this.detonate = !1, this.super = !1, this.reactionTime = 0, this.graveyardAttackers = [], this.spaceNeeded = 3, Ae.instance) return Ae.instance;
             Ae.instance = this
         }
         populate() {
@@ -3157,6 +3182,10 @@ var Incremancer;
             if (this.zombies.length > 0) {
                 for (let e = 0; e < this.zombies.length; e++) g.removeChild(this.zombies[e]), this.zombies[e].stop();
                 this.discardedZombies = this.zombies.slice(), this.zombies.length = 0, this.aliveZombies.length = 0
+            }
+            if (this.biomasses.length > 0) {
+                for (let e = 0; e < this.biomasses.length; e++) g.removeChild(this.biomasses[e]), this.biomasses[e].stop();
+                this.discardedBiomasses = this.biomasses.slice(), this.biomasses.length = 0, this.aliveBiomasses.length = 0
             }
             if (!this.zombieCursor) {
                 this.zombieCursor = new PIXI.Container;
@@ -3178,6 +3207,13 @@ var Incremancer;
             const i = Math.floor(Math.random() * this.textures.length);
             let a;
             this.discardedZombies.length > 0 ? (a = this.discardedZombies.pop(), a.textures = s ? this.dogTexture : this.textures[i].animated) : a = new Ee(s ? this.dogTexture : this.textures[i].animated), a.zombie = !0, a.mod = 1, a.scaleMod = 1, this.super && (a.mod = 10, a.scaleMod = 1.5), a.flags = new Fe, a.flags.dog = s, a.flags.super = this.super, a.deadTexture = a.flags.dog ? this.deadDogTexture : this.textures[i].dead, a.textureId = i, a.burnDamage = 0, a.lastKnownBuilding = !1, a.alpha = 1, a.animationSpeed = .15, a.anchor.set(35 / 80, 1), a.bloodbornTimer = this.bloodborn, a.position.set(e, t), a.target = null, a.zIndex = a.position.y, a.visible = !0, a.maxHealth = a.health = this.model.zombieHealth * a.mod, a.regenTimer = 5, a.state = be.lookingForTarget;
+            const r = s ? .7 : 1;
+            a.scaling = a.scaleMod * this.scaling * r, a.scale.set(Math.random() > .5 ? a.scaling : -1 * a.scaling, a.scaling), a.timer.attack = 0, a.xSpeed = 0, a.ySpeed = 0, a.speedMultiplier = 1, a.timer.scan = 0, a.timer.burnTick = this.burnTickTimer, a.timer.smoke = this.smokeTimer, a.play(), a.zombieId = this.currId++, this.zombies.push(a), g.addChild(a), this.smoke.newZombieSpawnCloud(e, t - 2)
+        }
+        createBiomassM(e, t, s = !1) {
+            const i = Math.floor(Math.random() * this.textures.length);
+            let a;
+            this.discardedBiomass.length > 0 ? (a = this.discardedBiomass.pop(), a.textures = s ? this.dogTexture : this.textures[i].animated) : a = new Ee(s ? this.dogTexture : this.textures[i].animated), a.biomass = !0, a.mod = 1, a.scaleMod = 1, this.super && (a.mod = 10, a.scaleMod = 1.5), a.flags = new Fe, a.flags.dog = s, a.flags.super = this.super, a.deadTexture = a.flags.dog ? this.deadDogTexture : this.textures[i].dead, a.textureId = i, a.burnDamage = 0, a.lastKnownBuilding = !1, a.alpha = 1, a.animationSpeed = .15, a.anchor.set(35 / 80, 1), a.bloodbornTimer = this.bloodborn, a.position.set(e, t), a.target = null, a.zIndex = a.position.y, a.visible = !0, a.maxHealth = a.health = this.model.zombieHealth * a.mod, a.regenTimer = 5, a.state = be.lookingForTarget;
             const r = s ? .7 : 1;
             a.scaling = a.scaleMod * this.scaling * r, a.scale.set(Math.random() > .5 ? a.scaling : -1 * a.scaling, a.scaling), a.timer.attack = 0, a.xSpeed = 0, a.ySpeed = 0, a.speedMultiplier = 1, a.timer.scan = 0, a.timer.burnTick = this.burnTickTimer, a.timer.smoke = this.smokeTimer, a.play(), a.zombieId = this.currId++, this.zombies.push(a), g.addChild(a), this.smoke.newZombieSpawnCloud(e, t - 2)
         }
@@ -4965,6 +5001,8 @@ var Incremancer;
                     return "+" + Math.round(100 * e.effect) + "% chance to recover brain";
                 case h.types.riseFromTheDeadChance:
                     return "+" + Math.round(100 * e.effect) + "% chance for corpse to become zombie";
+                case h.types.riseFromTheDeadChance2:
+                    return "+" + Math.round(100 * e.effect) + "% chance for corpse to become biomass monster";
                 case h.types.infectedBite:
                     return "+" + Math.round(100 * e.effect) + "% chance for zombies to infect their targets";
                 case h.types.infectedBlast:
