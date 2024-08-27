@@ -1009,6 +1009,7 @@ var Incremancer;
                 this.zombieHealth = 100, 
                 this.zombieHealthPCMod = 1, 
                 this.HshellHealthPCMod = 1, 
+                this.biomassPCMod = 1,
                 this.CyroVatPCMod = 1, 
                 this.PlagueVatPCMod = 1, 
                 this.CloningRep1PCMod = 1, 
@@ -1051,6 +1052,7 @@ var Incremancer;
                 this.creatureLimit = 1, 
                 this.harpySpeed = 75, 
                 this.tankBuster = !1, 
+                this.biomass = !1
                 this.harpyBombs = 1, 
                 this.stats = null, 
                 this.runicSyphon = {
@@ -1200,6 +1202,7 @@ var Incremancer;
                 this.gigazombies = !1, 
                 this.harpySpeed = 75, 
                 this.tankBuster = !1, 
+                this.biomass = !1
                 this.harpyBombs = 1
         }
         addEnergy(e) {
@@ -1553,6 +1556,7 @@ var Incremancer;
                 EnergyCost: "EnergyCost",   
                 golemHealthPC: "golemHealthPC",
                 golemDamagePC: "golemDamagePC",
+                biomass: "biomass",
                 prest_multPC: "prest_multPC",
                 startingPC: "startingPC",
                 energyCost: "energyCost",
@@ -1791,16 +1795,17 @@ var Incremancer;
                                  new le(61, "Big Boned", this.types.golemHealthPC, this.costs.parts, 1e3, 1.31, .02, 0, "Your golems gain +2% health with each rank of Big Boned.", null, 220),
                                  new le(62, "Hybrid Strength", this.types.HstrengthDmgPC, this.costs.parts, 1e3, 1.3, .01, 0, "Animating Golem parts fused with zombie flesh creates a terrifyingly strong Hybrid. Your zombies gain +1% damage with each rank of Hybrid Strength.", null, 301),
                                  new le(63, "Hybrid Shell", this.types.HshellHealthPC, this.costs.parts, 1e3, 1.31, .01, 0, "Golem armor shell provides extra protection for your fleshy zombies. Your zombies gain +1% health with each rank of Hybrid Shell.", null, 301),
-                                 new le(64, "Advanced Cyrogenic Vats", this.types.CyroVatPC, this.costs.parts, 1e3, 1.4, .1, 0, "Cooling these Brains further makes them last much longer. Your brain storage increases +10% with each rank of Advanced Cyrogenic Vats.", null, 302),
-                                 new le(65, "Golem Part Plague Vats", this.types.PlagueVatPC, this.costs.brains, 1e3, 1.35, .01, 0, "Using specialized Golem Parts allows for advancements in plague research. Plague Damage increases +1% with each rank of Golem Part Plague Vats.", null, 302),
-                                 new le(66, "Cloning Replicator", this.types.CloningRep1PC, this.costs.parts, 1e12, 1.26, .05, 0, "Mass produced Cloning Replicators allows for much greater use out of each Brain obtained. Brain Income increases +5% with each rank of Cloning Replicator.", null, 303),
-                                 new le(67, "Blood Synthezizer", this.types.BloodSynPC, this.costs.parts, 2e12, 1.25, .05, 0, "Artificial Blood can augment what we already get allowing for more of everything. Blood Income increases +5% with each rank of Blood Synthesizer.", null, 303),
-                                 new le(68, "Synthetic Bone Fabricator", this.types.SynBonePC, this.costs.parts, 3e12, 1.24, .05, 0, "Synthetic Bones made from Golem Parts?  Genius! Bone Income increases +5% with each rank of Synthetic Bone Fabricator.", null, 303),
-                                 new le(69, "Insectoid Parts Assemblers", this.types.SmolPartsPC, this.costs.parts, 4e12, 1.23, .05, 0, "Insect sized and shaped assemblers are far more efficient at maufacturing Golem parts. Parts Income increases +5% with each rank of Insectoid Parts Assemblers.", null, 303),
-                                 new le(70, "Golem Avionic", this.types.AvionicsPC, this.costs.parts, 2e17, 1.20, 2, 50, "Building on the success of hybrid zombies, small golem parts can enhance Harpy-Golem Hybrids. Harpy Speed +2 with each rank of Golem Avionics.", null, 304),
-                                 new le(71, "Electro-Shock Collars", this.types.ShockPC, this.costs.parts, 3e14, 1.20, .0025, 0, "Using shock collars tuned to the Hybrid Zombie's nervous system causes them to attack at blinding speeds! Attack Speed +0.25% with each rank of Electro-Shock Collars.", null, 304),
-                                 new le(72, "Power Regulators", this.types.EnergyCost, this.costs.parts, 1e18, 1.20, 1, 30, "Golem parts assembled around the graveyard can help regulate and attune necrotic power. Reduces zombie summoning cost by 1 with each rank of Power Regulators.", null, 304),
-                                 new le(73, "Abyssal Reputation", this.types.prest_multPC, this.costs.blood, 1e20, 1.25, .03, 0, "Astounding levels of blood sacrificed can enhance your reputation with dark entities in the Void. +3% Zombie Heatlh and Damage per rank", null, 304)],      
+                                 new le(64, "Biomass Monsters", this.types.biomass, this.costs.blood, 1e10, 1.2, 1, 1 "The flesh and blood of countless humans merge together to create this horrifying amalgamation. Biomass monsters will now have a 1% chance to spawn from human corpses if you have at least 200 zombies.", null, 301), 
+                                 new le(65, "Advanced Cyrogenic Vats", this.types.CyroVatPC, this.costs.parts, 1e3, 1.4, .1, 0, "Cooling these Brains further makes them last much longer. Your brain storage increases +10% with each rank of Advanced Cyrogenic Vats.", null, 302),
+                                 new le(66, "Golem Part Plague Vats", this.types.PlagueVatPC, this.costs.brains, 1e3, 1.35, .01, 0, "Using specialized Golem Parts allows for advancements in plague research. Plague Damage increases +1% with each rank of Golem Part Plague Vats.", null, 302),
+                                 new le(67, "Cloning Replicator", this.types.CloningRep1PC, this.costs.parts, 1e12, 1.26, .05, 0, "Mass produced Cloning Replicators allows for much greater use out of each Brain obtained. Brain Income increases +5% with each rank of Cloning Replicator.", null, 303),
+                                 new le(68, "Blood Synthezizer", this.types.BloodSynPC, this.costs.parts, 2e12, 1.25, .05, 0, "Artificial Blood can augment what we already get allowing for more of everything. Blood Income increases +5% with each rank of Blood Synthesizer.", null, 303),
+                                 new le(69, "Synthetic Bone Fabricator", this.types.SynBonePC, this.costs.parts, 3e12, 1.24, .05, 0, "Synthetic Bones made from Golem Parts?  Genius! Bone Income increases +5% with each rank of Synthetic Bone Fabricator.", null, 303),
+                                 new le(70, "Insectoid Parts Assemblers", this.types.SmolPartsPC, this.costs.parts, 4e12, 1.23, .05, 0, "Insect sized and shaped assemblers are far more efficient at maufacturing Golem parts. Parts Income increases +5% with each rank of Insectoid Parts Assemblers.", null, 303),
+                                 new le(71, "Golem Avionic", this.types.AvionicsPC, this.costs.parts, 2e17, 1.20, 2, 50, "Building on the success of hybrid zombies, small golem parts can enhance Harpy-Golem Hybrids. Harpy Speed +2 with each rank of Golem Avionics.", null, 304),
+                                 new le(72, "Electro-Shock Collars", this.types.ShockPC, this.costs.parts, 3e14, 1.20, .0025, 0, "Using shock collars tuned to the Hybrid Zombie's nervous system causes them to attack at blinding speeds! Attack Speed +0.25% with each rank of Electro-Shock Collars.", null, 304),
+                                 new le(73, "Power Regulators", this.types.EnergyCost, this.costs.parts, 1e18, 1.20, 1, 30, "Golem parts assembled around the graveyard can help regulate and attune necrotic power. Reduces zombie summoning cost by 1 with each rank of Power Regulators.", null, 304),
+                                 new le(74, "Abyssal Reputation", this.types.prest_multPC, this.costs.blood, 1e20, 1.25, .03, 0, "Astounding levels of blood sacrificed can enhance your reputation with dark entities in the Void. +3% Zombie Heatlh and Damage per rank", null, 304)],      
                 this.prestigeUpgrades = [new le(108, "A Small Investment", this.types.startingPC, this.costs.prestigePoints, 10, 1.25, 1, 0, "Each rank gives you an additional 500 blood, 50 brains, and 200 bones when starting a new level.", null, null),
                                          new le(109, "Time Warp", this.types.unlockSpell, this.costs.prestigePoints, 50, 1, 1, 1, "Unlock the Time Warp spell in order to speed up the flow of time.", null, null),
                                          new le(110, "Master of Death", this.types.energyCost, this.costs.prestigePoints, 1e3, 1, 1, 5, "Each rank reduces the energy cost of summoning a zombie by 1", null, null),
@@ -1929,6 +1934,8 @@ var Incremancer;
                 case this.types.HshellHealthPC:
                     return void (this.gameModel.zombieHealthPCMod *= Math.pow(1 + e.effect, t)),
                                 (this.gameModel.HshellHealthPCMod *= Math.pow(1 + e.effect, t));
+                case this.types.biomass:
+                    return void (this.gameModel.biomass = !0);
                 case this.types.CyroVatPC:
                     return void (this.gameModel.brainsMax *= Math.pow(1 + e.effect, t)),
                                 (this.gameModel.CyroVatPCMod *= Math.pow(1 + e.effect, t));
@@ -2133,6 +2140,8 @@ var Incremancer;
                     return "Harpy bombs: " + n(this.gameModel.harpyBombs);
                 case this.types.tankBuster:
                     return this.currentRank(e) > 0 ? "You have unlocked tank buster" : "You have yet to unlock tank buster";
+                case this.types.biomass:
+                    return this.currentRank(e) > 0 ? "You have unlocked biomass monsters" : "You have yet to unlock biomass monsters";
                 case this.types.spikeDelay:
                     return "Current spike delay: " + (5 - this.currentRank(e)) + " seconds"
             }
@@ -4995,6 +5004,8 @@ var Incremancer;
                     return "+" + e.effect + " harpy bombs";
                 case h.types.tankBuster:
                     return "Anti tank harpies";
+                case h.types.biomass:
+                    return "Biomass monster";
                 case h.types.spikeDelay:
                     return "-20% spike delay"
             }
