@@ -1007,9 +1007,9 @@ var Incremancer;
                 this.brainsPCMod = 1, 
                 this.brainsStorePCMod = 1, 
                 this.zombieHealth = 100, 
-                this.biomassHealth = 100000
-                this.biomassDamage = 100000
-                this.biomassSpeed = 10
+                this.biomassHealth = 100000,
+                this.biomassDamage = 100000,
+                this.biomassSpeed = 10,
                 this.zombieHealthPCMod = 1, 
                 this.HshellHealthPCMod = 1, 
                 this.CyroVatPCMod = 1, 
@@ -1055,7 +1055,7 @@ var Incremancer;
                 this.creatureLimit = 1, 
                 this.harpySpeed = 75, 
                 this.tankBuster = !1, 
-                this.biomass = !1
+                this.biomass = !1,
                 this.harpyBombs = 1, 
                 this.stats = null, 
                 this.runicSyphon = {
@@ -1144,7 +1144,7 @@ var Incremancer;
             }
         }
         static getInstance() {
-            return ne.instance || (ne.instance = new ne, ne.instance.particles = new Qe, ne.instance.trophies = new de, ne.instance.bones = new tt, ne.instance.creatureFactory = new ae, ne.instance.creatures = new Ue, ne.instance.boneCollectors = new Ve, ne.instance.graveyard = new Oe, ne.instance.spells = new q, ne.instance.partFactory = new se, ne.instance.skeleton = new Xe, ne.instance.upgrades = new oe, ne.instance.zombies = new Ae, ne.instance.biomassm = new Ae, ne.instance.humans = new Se, ne.instance.police = new ke, ne.instance.army = new Te), ne.instance
+            return ne.instance || (ne.instance = new ne, ne.instance.particles = new Qe, ne.instance.trophies = new de, ne.instance.bones = new tt, ne.instance.creatureFactory = new ae, ne.instance.creatures = new Ue, ne.instance.boneCollectors = new Ve, ne.instance.graveyard = new Oe, ne.instance.spells = new q, ne.instance.partFactory = new se, ne.instance.skeleton = new Xe, ne.instance.upgrades = new oe, ne.instance.zombies = new Ae, ne.instance.biomasses = new Ae, ne.instance.humans = new Se, ne.instance.police = new ke, ne.instance.army = new Te), ne.instance
         }
         resetToBaseStats() {
             this.energyRate = this.baseStats.energyRate, 
@@ -1206,7 +1206,7 @@ var Incremancer;
                 this.gigazombies = !1, 
                 this.harpySpeed = 75, 
                 this.tankBuster = !1, 
-                this.biomass = !1
+                this.biomass = !1,
                 this.harpyBombs = 1
         }
         addEnergy(e) {
@@ -3159,7 +3159,7 @@ var Incremancer;
     }
     class Ae {
         constructor() {
-            if (this.zombies = [], this.discardedZombies = [], this.aliveZombies = [], this.biomasses = [], this.discardedBiomass = [], this.aliveBiomasses = [] this.aliveHumans = [], this.zombiePartition = [], this.scaling = 2, this.moveTargetDistance = 15, this.attackDistance = 15, this.attackSpeed = 3, this.targetDistance = 100, this.fadeSpeed = .1, this.refundChance = 0, this.currId = 1, this.scanTime = 3, this.textures = [], this.dogTexture = [], this.deadDogTexture = [], this.maxSpeed = 10, this.zombieCursor = null, this.zombieCursorText = null, this.zombieCursorScale = 3, this.mouseOutOfBounds = !1, this.burnTickTimer = 5, this.bloodpact = 1, this.bloodborn = 0, this.gigamutagen = 0, this.gigamutationTimer = 10, this.smokeTimer = .3, this.fastDistance = i, this.magnitude = t, this.detonate = !1, this.super = !1, this.reactionTime = 0, this.graveyardAttackers = [], this.spaceNeeded = 3, Ae.instance) return Ae.instance;
+            if (this.zombies = [], this.discardedZombies = [], this.aliveZombies = [], this.biomasses = [], this.discardedBiomass = [], this.aliveBiomasses = [], this.aliveHumans = [], this.zombiePartition = [], this.scaling = 2, this.moveTargetDistance = 15, this.attackDistance = 15, this.attackSpeed = 3, this.targetDistance = 100, this.fadeSpeed = .1, this.refundChance = 0, this.currId = 1, this.scanTime = 3, this.textures = [], this.dogTexture = [], this.deadDogTexture = [], this.maxSpeed = 10, this.zombieCursor = null, this.zombieCursorText = null, this.zombieCursorScale = 3, this.mouseOutOfBounds = !1, this.burnTickTimer = 5, this.bloodpact = 1, this.bloodborn = 0, this.gigamutagen = 0, this.gigamutationTimer = 10, this.smokeTimer = .3, this.fastDistance = i, this.magnitude = t, this.detonate = !1, this.super = !1, this.reactionTime = 0, this.graveyardAttackers = [], this.spaceNeeded = 3, Ae.instance) return Ae.instance;
             Ae.instance = this
         }
         constructor() {
