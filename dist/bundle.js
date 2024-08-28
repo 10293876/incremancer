@@ -4500,8 +4500,8 @@ var Incremancer;
             o.xSpeed = Math.cos(angle) * speed; 
             o.ySpeed = Math.sin(angle) * speed; 
             o.rotation = angle;
-            o.x += o.xSpeed;
-            o.y += o.ySpeed;
+            o.x = o.xSpeed;
+            o.y = o.ySpeed;
         }
     }
     class nt extends _ {
