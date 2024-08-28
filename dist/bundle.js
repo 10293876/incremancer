@@ -3133,9 +3133,17 @@ var Incremancer;
             super(...arguments), this.dog = !1, this.super = !1
         }
     }
+    textures  = {
+        0: "sprites/zombie.json"
+        1: "sprites/biomassmonster.json"
     class Ee extends Pe {
         constructor() {
             super(...arguments), this.flags = new Fe, this.mod = 1, this.scaleMod = 1, this.textureId = 0, this.turnTimer = 0
+        }
+    }
+    class Ee extends Pe {
+        constructor() {
+            super(...arguments), this.flags = new Fe, this.mod = 1, this.scaleMod = 1, this.textureId = 1, this.turnTimer = 0
         }
     }
     class Ae {
@@ -3161,7 +3169,7 @@ var Incremancer;
                 this.discardedZombies = this.zombies.slice(), this.zombies.length = 0, this.aliveZombies.length = 0
             }
             if (this.biomasses.length > 0) {
-                for (let e = 0; e < this.biomasses.length; e++) g.removeChild(this.biomasses[e]), this.biomasses[e].stop();
+                for (let f = 0; f < this.biomasses.length; f++) g.removeChild(this.biomasses[f]), this.biomasses[f].stop();
                 this.discardedBiomasses = this.biomasses.slice(), this.biomasses.length = 0, this.aliveBiomasses.length = 0
             }
             if (!this.zombieCursor) {
