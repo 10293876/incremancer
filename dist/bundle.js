@@ -4506,8 +4506,8 @@ var Incremancer;
                 o.x += o.xSpeed;
                 o.y += o.ySpeed;
                 o.rotation = angle;
-    };
-}
+            }
+        }
     class nt extends _ {
         constructor() {
             if (super(), this.viewableArea = null, nt.instance) return nt.instance;
