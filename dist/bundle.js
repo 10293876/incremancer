@@ -4490,13 +4490,13 @@ var Incremancer;
         }
         newBullet(e, t, s, i = !1, a = !1, r = !1, n = !1) {
             let o;
-            this.discardedSprites.length > 0 ? o = this.discardedSprites.pop() : (o = new at(this.texture), o.scale.x = o.scale.y = 2, this.sprites.push(o)), g.addChild(o), o.texture = n ? this.darkOrbTexture : r ? this.fireballTexture : this.texture, o.source = e, o.x = e.x, o.y = e.y - 8, i && (o.y = e.y - 12), o.target = t, o.damage = s, o.visible = !0, o.alpha = 1, o.hitbox = a ? 1.5 * this.hitbox : this.hitbox, o.plague = i, o.rocket = a, o.fireball = r, o.darkorb = n, o.tint = i ? 65280 : a ? 16772096 : 16777215, o.scale.x = o.scale.y = a ? 2.5 : 2, r && (o.scale.x = o.scale.y = 1.5);
+            this.discardedSprites.length > 0 ? o = this.discardedSprites.pop() : (o = new at(this.texture), o.scale.x = o.scale.y = 2, this.sprites.push(o)), g.addChild(o), o.texture = n ? this.darkOrbTexture : r ? this.fireballTexture : this.texture, o.source = e, o.x = e.x, o.y = e.y - 8, i && (o.y = e.y - 12), o.target = t, o.damage = s, o.visible = !0, o.alpha = 1, o.hitbox = a ? 1.5 * this.hitbox : this.hitbox, o.plague = i, o.rocket = a, o.fireball = r, o.darkorb = n, o.tint = i ? 65280 : a ? 16772096 : 16777215, o.scale.x = o.scale.y = a ? 2.5 : 2, r && (o.scale.x = o.scale.y = 5);
             const h = t.x - o.x,
                 l = t.y - 8 - o.y,
                 d = Math.abs(h),
                 c = Math.abs(l);
             let u = 1 / Math.max(d, c);
-            u *= 1.29289 - (d + c) * u * .29289, o.xSpeed = h * u * this.speed, o.ySpeed = l * u * this.speed, o.rotation = Math.atan2(o.target.x, o.target.y);
+            u *= 1.29289 - (d + c) * u * .29289, o.xSpeed = h * u * this.speed, o.ySpeed = l * u * this.speed, o.rotation = Math.atan2(o.xSpeed, o.ySpeed);
         }
     }
     class nt extends _ {
