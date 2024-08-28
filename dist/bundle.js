@@ -3568,34 +3568,32 @@ var Incremancer;
             for (let t = 0; t < this.skeletons.length; t++) this.skeletons[t].visible && (this.updateCreature(this.skeletons[t], e), this.skeletons[t].flags.dead || (this.aliveZombies.push(this.skeletons[t]), this.aliveSkeletons.push(this.skeletons[t])));
             this.aliveSkeletons.length < this.persistent.skeletons && (this.spawnTimer -= e, this.spawnTimer < 0 && (this.spawnCreature(), this.spawnTimer = this.respawnTime)), this.lastKillingBlow -= e; if (this.model.persistentData.autoSellGear == !0 && this.aliveSkeletons.length > 0) { this.destroyAllItems() }; if (this.model.persistentData.autoSellGearLegendary == !0 && this.aliveSkeletons.length > 0) { this.destroyAllItemsLegendary() };
         }
-        updateCreature(e, t) {
-            if this.homingdarkorb == !1 {
-                if (e.flags.dead) {
-                    if (!e.visible) return;
-                    return e.alpha -= this.fadeSpeed * t, void (e.alpha < 0 && (e.visible = !1, g.removeChild(e)))
+         updateCreature(e, t) {
+            if (e.flags.dead) {
+                if (!e.visible) return;
+                return e.alpha -= this.fadeSpeed * t, void (e.alpha < 0 && (e.visible = !1, g.removeChild(e)))
+            }
+            switch (this.boneshield > 0 && e.boneshield < this.boneshield && (e.boneshieldTimer -= t, e.boneshieldTimer < 0 && (e.boneshieldTimer = 10 / this.boneshield, e.boneshield++)), this.boneshield ? (e.boneshieldContainer.visible = !0, e.boneshieldContainer.update(e.boneshield), e.boneshieldContainer.rotation += t) : e.boneshieldContainer.visible = !1, this.darkorb > 0 && (this.darkorbTimer -= t, this.darkorbTimer < 0 && e.target && !e.target.flags.dead && (this.darkorbTimer = this.darkorb, this.bullets.newBullet(e, e.target, this.calculateDamage(e), !1, !1, !1, !0))), e.timer.attack -= t, e.timer.scan -= t, e.timer.ability -= t, this.model.runeEffects.healthRegen > 0 && this.updateZombieRegen(e, t), e.flags.burning && !e.immuneToBurns && this.updateBurns(e, t), e.timer.ability < 0 && (e.timer.ability = 4), e.target && !e.target.flags.dead || (e.state = be.lookingForTarget, e.timer.target = 0, e.timer.scan = 0), e.state) {
+                case be.lookingForTarget:
+                    this.searchClosestTarget(e), e.target && (e.state = be.movingToTarget);
+                    break;
+                case be.movingToTarget: {
+                    const s = this.fastDistance(e.position.x, e.position.y = e.target.x, e.target.y);
+                    if (s < this.attackDistance) {
+                        e.state = be.attackingTarget;
+                        break
+                    }
+                    s > 3 * this.attackDistance && e.timer.scan < 0 && this.searchClosestTarget(e), this.updateCreatureSpeed(e, t);
+                    break
                 }
-                switch (this.boneshield > 0 && e.boneshield < this.boneshield && (e.boneshieldTimer -= t, e.boneshieldTimer < 0 && (e.boneshieldTimer = 10 / this.boneshield, e.boneshield++)), this.boneshield ? (e.boneshieldContainer.visible = !0, e.boneshieldContainer.update(e.boneshield), e.boneshieldContainer.rotation += t) : e.boneshieldContainer.visible = !1, this.darkorb > 0 && (this.darkorbTimer -= t, this.darkorbTimer < 0 && e.target && !e.target.flags.dead && (this.darkorbTimer = this.darkorb, this.bullets.newBullet(e, e.target, this.calculateDamage(e), !1, !1, !1, !0))), e.timer.attack -= t, e.timer.scan -= t, e.timer.ability -= t, this.model.runeEffects.healthRegen > 0 && this.updateZombieRegen(e, t), e.flags.burning && !e.immuneToBurns && this.updateBurns(e, t), e.timer.ability < 0 && (e.timer.ability = 4), e.target && !e.target.flags.dead || (e.state = be.lookingForTarget, e.timer.target = 0, e.timer.scan = 0), e.state) {
-                    case be.lookingForTarget:
-                        this.searchClosestTarget(e), e.target && (e.state = be.movingToTarget);
-                        break;
-                    case be.movingToTarget: {
-                        const s = this.fastDistance(e.position.x, e.position.y, e.target.x, e.target.y);
-                        if (s < this.attackDistance) {
-                            e.state = be.attackingTarget;
-                            break
-                        }
-                        s > 3 * this.attackDistance && e.timer.scan < 0 && this.searchClosestTarget(e), this.updateCreatureSpeed(e, t);
-                        break
-                    }
-                    case be.attackingTarget: {
-                        const s = this.fastDistance(e.position.x, e.position.y, e.target.x, e.target.y);
-                        if (s < this.attackDistance) {
-                            if (e.timer.attack < 0 && !e.target.flags.dead && (this.humans.damageHuman(e.target, this.calculateDamage(e)), e.target.flags.dead && this.killingBlow(e.target), e.timer.attack = this.attackSpeed * (1 / (this.model.runeEffects.attackSpeed * this.model.ShockPCMod)), e.flags.burning && (e.timer.attack *= 1 / this.model.burningSpeedMod), this.randomSpells.length > 0))
-                                for (let e = 0; e < this.randomSpells.length; e++) this.spellTimer < 0 && Math.random() < .07 + this.increaseChance && (this.spells.castSpellNoMana(this.randomSpells[e]), this.spellTimer = 3);
-                            s > this.attackDistance / 2 && this.updateCreatureSpeed(e, t)
-                        } else e.state = be.movingToTarget;
-                        break
-                    }
+                case be.attackingTarget: {
+                    const s = this.fastDistance(e.position.x, e.position.y, e.target.x, e.target.y);
+                    if (s < this.attackDistance) {
+                        if (e.timer.attack < 0 && !e.target.flags.dead && (this.humans.damageHuman(e.target, this.calculateDamage(e)), e.target.flags.dead && this.killingBlow(e.target), e.timer.attack = this.attackSpeed * (1 / (this.model.runeEffects.attackSpeed * this.model.ShockPCMod)), e.flags.burning && (e.timer.attack *= 1 / this.model.burningSpeedMod), this.randomSpells.length > 0))
+                            for (let e = 0; e < this.randomSpells.length; e++) this.spellTimer < 0 && Math.random() < .07 + this.increaseChance && (this.spells.castSpellNoMana(this.randomSpells[e]), this.spellTimer = 3);
+                        s > this.attackDistance / 2 && this.updateCreatureSpeed(e, t)
+                    } else e.state = be.movingToTarget;
+                    break
                 }
             }
         }
