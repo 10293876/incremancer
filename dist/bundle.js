@@ -4488,31 +4488,17 @@ var Incremancer;
         updatePart(e, t) {
             i(e.x, e.y + 8, e.target.x, e.target.y) < e.hitbox ? (e.plague ? (this.zombies.inflictPlague(e.target), this.humans.damageHuman(e.target, e.damage)) : e.fireball ? (this.humans.burnHuman(e.target, e.damage), this.humans.damageHuman(e.target, e.damage)) : e.darkorb ? e.target.flags.dead || (this.humans.damageHuman(e.target, e.damage), e.target.timer.dogStun = 5, (new Xe).orbHit(e.target)) : !e.rocket && e.target.bulletReflect && Math.random() < e.target.bulletReflect ? this.newBullet(e.target, e.source, e.damage, !1, !1, !1) : e.rocket ? (e.target.graveyard && this.graveyard.damageGraveyard(e.damage), this.army.droneExplosion(e.target.x, e.target.y, null, e.damage)) : (e.target.zombie && this.zombies.damageZombie(e.target, e.damage, e.source), e.target.human && this.humans.damageHuman(e.target, e.damage)), e.visible = !1, this.discardedSprites.push(e), g.removeChild(e)) : (e.x += e.xSpeed * t, e.y += e.ySpeed * t, e.zIndex = e.y), e.darkorb ? e.alpha -= this.fadeSpeed * t * .4 : e.alpha -= this.fadeSpeed * t, e.alpha < 0 && (e.visible = !1, this.discardedSprites.push(e), g.removeChild(e))
         }
-       newBullet(e, t, s, i = !1, a = !1, r = !1, n = !1) {
+        newBullet(e, t, s, i = !1, a = !1, r = !1, n = !1) {
             let o;
             this.discardedSprites.length > 0 ? o = this.discardedSprites.pop() : (o = new at(this.texture), o.scale.x = o.scale.y = 2, this.sprites.push(o)), g.addChild(o), o.texture = n ? this.darkOrbTexture : r ? this.fireballTexture : this.texture, o.source = e, o.x = e.x, o.y = e.y - 8, i && (o.y = e.y - 12), o.target = t, o.damage = s, o.visible = !0, o.alpha = 1, o.hitbox = a ? 1.5 * this.hitbox : this.hitbox, o.plague = i, o.rocket = a, o.fireball = r, o.darkorb = n, o.tint = i ? 65280 : a ? 16772096 : 16777215, o.scale.x = o.scale.y = a ? 2.5 : 2, r && (o.scale.x = o.scale.y = 1.5);
-            const speed = this.speed;
-
-    
-            o.update = () => {
-            if (!o.target) return;
-
-            const h = o.target.x - o.x;
-            const l = o.target.y - 8 - o.y;
-
-            const angle = Math.atan2(l, h);
-
-           
-            o.xSpeed = Math.cos(angle) * speed;
-            o.ySpeed = Math.sin(angle) * speed;
-
-    
-            o.x += o.xSpeed;
-            o.y += o.ySpeed;
-
-            o.rotation = angle;
-    };
-}
+            const h = t.x - o.x,
+                l = t.y - 8 - o.y,
+                d = Math.abs(h),
+                c = Math.abs(l);
+            let u = 1 / Math.max(d, c);
+            u *= 1.29289 - (d + c) * u * .29289, o.xSpeed = h * u * this.speed, o.ySpeed = 5 * u * this.speed, o.rotation = Math.atan2(o.ySpeed, o.xSpeed)
+        }
+    }
     class nt extends _ {
         constructor() {
             if (super(), this.viewableArea = null, nt.instance) return nt.instance;
