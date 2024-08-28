@@ -3569,7 +3569,7 @@ var Incremancer;
             this.aliveSkeletons.length < this.persistent.skeletons && (this.spawnTimer -= e, this.spawnTimer < 0 && (this.spawnCreature(), this.spawnTimer = this.respawnTime)), this.lastKillingBlow -= e; if (this.model.persistentData.autoSellGear == !0 && this.aliveSkeletons.length > 0) { this.destroyAllItems() }; if (this.model.persistentData.autoSellGearLegendary == !0 && this.aliveSkeletons.length > 0) { this.destroyAllItemsLegendary() };
         }
         updateCreature(e, t) {
-            if this.darkorbhoming = !1 {
+            if this.homingdarkorb = !1 {
                 if (e.flags.dead) {
                     if (!e.visible) return;
                     return e.alpha -= this.fadeSpeed * t, void (e.alpha < 0 && (e.visible = !1, g.removeChild(e)))
