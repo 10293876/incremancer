@@ -3133,9 +3133,10 @@ var Incremancer;
             super(...arguments), this.dog = !1, this.super = !1
         }
     }
-    textures  = {
-        0: "sprites/zombie.json"
+    const textures = {
+        0: "sprites/zombie.json",
         1: "sprites/biomassmonster.json"
+}
     class Ee extends Pe {
         constructor() {
             super(...arguments), this.flags = new Fe, this.mod = 1, this.scaleMod = 1, this.textureId = 0, this.turnTimer = 0
