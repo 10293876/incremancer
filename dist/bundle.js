@@ -1794,7 +1794,7 @@ var Incremancer;
                                  new le(61, "Big Boned", this.types.golemHealthPC, this.costs.parts, 1e3, 1.31, .02, 0, "Your golems gain +2% health with each rank of Big Boned.", null, 220),
                                  new le(62, "Hybrid Strength", this.types.HstrengthDmgPC, this.costs.parts, 1e3, 1.3, .01, 0, "Animating Golem parts fused with zombie flesh creates a terrifyingly strong Hybrid. Your zombies gain +1% damage with each rank of Hybrid Strength.", null, 301),
                                  new le(63, "Hybrid Shell", this.types.HshellHealthPC, this.costs.parts, 1e3, 1.31, .01, 0, "Golem armor shell provides extra protection for your fleshy zombies. Your zombies gain +1% health with each rank of Hybrid Shell.", null, 301),
-                                 new le(64, "Biomass Monsters", this.types.biomassrisefromdead, this.costs.blood, 1e14, 1.4, .1, 10, "The flesh and blood of countless humans merge together to create this horrifying amalgamation. Biomass monsters will now have a 1% chance to spawn from human corpses if you have at least 200 zombies.", null, null),
+                                 new le(64, "Biomass Monsters", this.types.biomassrisefromdead, this.costs.blood, 1e11, 1.4, .1, 10, "The flesh and blood of countless humans merge together to create this horrifying amalgamation. Biomass monsters will now have a 1% chance to spawn from human corpses if you have at least 200 zombies.", null, null),
                                  new le(65, "Advanced Cyrogenic Vats", this.types.CyroVatPC, this.costs.parts, 1e3, 1.4, .1, 0, "Cooling these Brains further makes them last much longer. Your brain storage increases +10% with each rank of Advanced Cyrogenic Vats.", null, 302),
                                  new le(66, "Golem Part Plague Vats", this.types.PlagueVatPC, this.costs.brains, 1e3, 1.35, .01, 0, "Using specialized Golem Parts allows for advancements in plague research. Plague Damage increases +1% with each rank of Golem Part Plague Vats.", null, 302),
                                  new le(67, "Cloning Replicator", this.types.CloningRep1PC, this.costs.parts, 1e12, 1.26, .05, 0, "Mass produced Cloning Replicators allows for much greater use out of each Brain obtained. Brain Income increases +5% with each rank of Cloning Replicator.", null, 303),
@@ -2582,7 +2582,7 @@ var Incremancer;
             }), this.vipText.anchor.set(.5, 1), this.vipText.scale.x = .25, this.vipText.scale.y = .25, b.addChild(this.vipText)), this.vipText.visible = !0, this.vipText.human = e, this.vipText.yOffset = -20, this.vipText.x = e.x, this.vipText.y = e.y + this.vipText.yOffset
         }
         populate() {
-            if (this.map = new ee, this.zombies = new Ae, this.gameModel = ne.getInstance(), this.blood = new _e, this.smoke = new ot, this.bones = new tt, this.skeleton = new Xe, this.blasts = new nt, this.fragments = new lt, this.trophies = new de, this.exclamations = new it, this.bullets = new rt, this.police = new ke, this.army = new Te, this.tanks = new De, this.map.populatePois(), 0 == this.textures.length)
+            if (this.map = new ee, this.zombies = new Ae, this.biomasses = new Ae, this.gameModel = ne.getInstance(), this.blood = new _e, this.smoke = new ot, this.bones = new tt, this.skeleton = new Xe, this.blasts = new nt, this.fragments = new lt, this.trophies = new de, this.exclamations = new it, this.bullets = new rt, this.police = new ke, this.army = new Te, this.tanks = new De, this.map.populatePois(), 0 == this.textures.length)
                 for (let e = 0; e < 6; e++) {
                     const t = [];
                     for (let s = 0; s < 3; s++) t.push(PIXI.Texture.from("human" + (e + 1) + "_" + (s + 1) + ".png"));
@@ -2637,6 +2637,8 @@ var Incremancer;
         updateDeadHumanFading(e, t) {
             if (e.visible) {
                 if (e.alpha > .5 && e.alpha - this.fadeSpeed * t <= .5 && !e.flags.tank && Math.random() < this.gameModel.riseFromTheDeadChance) return this.zombies.createZombie(e.x, e.y, e.flags.dog), e.visible = !1, void g.removeChild(e);
+                e.alpha -= this.fadeSpeed * t, e.alpha < 0 && (e.visible = !1, g.removeChild(e))
+                if (e.alpha > .5 && e.alpha - this.fadeSpeed * t <= .5 && !e.flags.tank && Math.random() < this.gameModel.biomassrisefromdead) return this.biomasses.createBiomass(e.x, e.y, e.flags.dog), e.visible = !1, void g.removeChild(e);
                 e.alpha -= this.fadeSpeed * t, e.alpha < 0 && (e.visible = !1, g.removeChild(e))
             }
         }
