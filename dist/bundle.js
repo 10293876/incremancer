@@ -4496,7 +4496,7 @@ var Incremancer;
                 d = Math.abs(h),
                 c = Math.abs(l);
             let u = 1 / Math.max(d, c);
-            u *= 1.29289 - (d + c) * u * .29289, o.xSpeed = h * u * this.speed, o.ySpeed = 5 * u * this.speed, o.rotation = Math.atan2(o.ySpeed, o.xSpeed)
+            u *= 1.29289 - (d + c) * u * .29289, o.xSpeed = h * u * this.speed, o.ySpeed = 1 * u * this.speed, o.rotation = Math.atan2(h, l)
         }
     }
     class nt extends _ {
