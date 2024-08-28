@@ -3573,34 +3573,36 @@ var Incremancer;
                 if (!e.visible) return;
                 return e.alpha -= this.fadeSpeed * t, void (e.alpha < 0 && (e.visible = !1, g.removeChild(e)))
             }
-            switch (this.boneshield > 0 && e.boneshield < this.boneshield && (e.boneshieldTimer -= t, e.boneshieldTimer < 0 && (e.boneshieldTimer = 10 / this.boneshield, e.boneshield++)), this.boneshield ? (e.boneshieldContainer.visible = !0, e.boneshieldContainer.update(e.boneshield), e.boneshieldContainer.rotation += t) : e.boneshieldContainer.visible = !1, this.darkorb > 0 && (this.darkorbTimer -= t, this.darkorbTimer < 0 && e.target && !e.target.flags.dead && (this.darkorbTimer = this.darkorb, this.bullets.newBullet(e, e.target, this.calculateDamage(e), !1, !1, !1, !0))), e.timer.attack -= t, e.timer.scan -= t, e.timer.ability -= t, this.model.runeEffects.healthRegen > 0 && this.updateZombieRegen(e, t), e.flags.burning && !e.immuneToBurns && this.updateBurns(e, t), e.timer.ability < 0 && (e.timer.ability = 4), e.target && !e.target.flags.dead || (e.state = be.lookingForTarget, e.timer.target = 0, e.timer.scan = 0), e.state) {
-            }
             if (this.darkorbhoming = !1) {
-                case be.lookingForTarget:
-                    this.searchClosestTarget(e), e.target && (e.state = be.movingToTarget);
-                    break;
-                case be.movingToTarget: {
-                    const s = this.fastDistance(e.position.x, e.position.y, e.target.x, e.target.y);
-                    if (s < this.attackDistance) {
-                        e.state = be.attackingTarget;
+                switch (this.boneshield > 0 && e.boneshield < this.boneshield && (e.boneshieldTimer -= t, e.boneshieldTimer < 0 && (e.boneshieldTimer = 10 / this.boneshield, e.boneshield++)), this.boneshield ? (e.boneshieldContainer.visible = !0, e.boneshieldContainer.update(e.boneshield), e.boneshieldContainer.rotation += t) : e.boneshieldContainer.visible = !1, this.darkorb > 0 && (this.darkorbTimer -= t, this.darkorbTimer < 0 && e.target && !e.target.flags.dead && (this.darkorbTimer = this.darkorb, this.bullets.newBullet(e, e.target, this.calculateDamage(e), !1, !1, !1, !0))), e.timer.attack -= t, e.timer.scan -= t, e.timer.ability -= t, this.model.runeEffects.healthRegen > 0 && this.updateZombieRegen(e, t), e.flags.burning && !e.immuneToBurns && this.updateBurns(e, t), e.timer.ability < 0 && (e.timer.ability = 4), e.target && !e.target.flags.dead || (e.state = be.lookingForTarget, e.timer.target = 0, e.timer.scan = 0), e.state) {
+                    case be.lookingForTarget:
+                        this.searchClosestTarget(e), e.target && (e.state = be.movingToTarget);
+                        break;
+                    case be.movingToTarget: {
+                        const s = this.fastDistance(e.position.x, e.position.y, e.target.x, e.target.y);
+                        if (s < this.attackDistance) {
+                            e.state = be.attackingTarget;
+                            break
+                        }
+                        s > 3 * this.attackDistance && e.timer.scan < 0 && this.searchClosestTarget(e), this.updateCreatureSpeed(e, t);
                         break
                     }
-                    s > 3 * this.attackDistance && e.timer.scan < 0 && this.searchClosestTarget(e), this.updateCreatureSpeed(e, t);
-                    break
                 }
             }
-             else if (this.darkorbhoming = 0!) {
-                case be.lookingForTarget:
-                    this.searchClosestTarget(e), e.target && (e.state = be.movingToTarget);
-                    break;
-                case be.movingToTarget: {
-                    const s = this.fastDistance(e.position.x, e.position.y, e.target.x, e.target.y);
-                    if (s < this.attackDistance) {
-                        e.state = be.attackingTarget;
+            else if (this.darkorbhoming = !1) {
+                switch (this.boneshield > 0 && e.boneshield < this.boneshield && (e.boneshieldTimer -= t, e.boneshieldTimer < 0 && (e.boneshieldTimer = 10 / this.boneshield, e.boneshield++)), this.boneshield ? (e.boneshieldContainer.visible = !0, e.boneshieldContainer.update(e.boneshield), e.boneshieldContainer.rotation += t) : e.boneshieldContainer.visible = !1, this.darkorb > 0 && (this.darkorbTimer -= t, this.darkorbTimer < 0 && e.target && !e.target.flags.dead && (this.darkorbTimer = this.darkorb, this.bullets.newBullet(e, e.target, this.calculateDamage(e), !1, !1, !1, !0))), e.timer.attack -= t, e.timer.scan -= t, e.timer.ability -= t, this.model.runeEffects.healthRegen > 0 && this.updateZombieRegen(e, t), e.flags.burning && !e.immuneToBurns && this.updateBurns(e, t), e.timer.ability < 0 && (e.timer.ability = 4), e.target && !e.target.flags.dead || (e.state = be.lookingForTarget, e.timer.target = 0, e.timer.scan = 0), e.state) {
+                    case be.lookingForTarget:
+                        this.searchClosestTarget(e), e.target && (e.state = be.movingToTarget);
+                        break;
+                    case be.movingToTarget: {
+                        const s = this.fastDistance(e.position.x, e.position.y, e.target.x, e.target.y);
+                        if (s < this.attackDistance) {
+                            e.state = be.attackingTarget;
+                            break
+                        }
+                        s > 3 * this.attackDistance && e.timer.scan < 0 && this.searchClosestTarget(e), this.updateCreatureSpeed(e, t);
                         break
                     }
-                    s > 3 * this.attackDistance && e.timer.scan < 0 && this.searchClosestTarget(e), this.updateCreatureSpeed(e, t);
-                    break
                 }
             }
                 case be.attackingTarget: {
