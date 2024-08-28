@@ -3161,7 +3161,7 @@ var Incremancer;
                 this.discardedZombies = this.zombies.slice(), this.zombies.length = 0, this.aliveZombies.length = 0
             }
             if (this.biomasses.length > 0) {
-                for (let e = 0; e < this.zombies.length; e++) g.removeChild(this.zombies[e]), this.zombies[e].stop();
+                for (let e = 0; e < this.biomasses.length; e++) g.removeChild(this.biomasses[e]), this.biomasses[e].stop();
                 this.discardedBiomasses = this.biomasses.slice(), this.biomasses.length = 0, this.aliveBiomass.length = 0
             }
             if (!this.zombieCursor) {
