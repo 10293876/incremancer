@@ -200,7 +200,7 @@ var Incremancer;
                         }), y = new PIXI.Sprite(f), y.visible = !1, y.alpha = 0, m.addChild(y), c.addChild(u), c.addChild(p), c.addChild(g), c.addChild(b), e.stage.addChild(c), e.stage.addChild(m), c.interactive = !0, c.interactiveChildren = !1, c.on("pointerdown", z), c.on("pointerup", I), c.on("pointerupoutside", I), c.on("pointermove", H), c.on("click", E), c.on("tap", E), document.getElementsByTagName("canvas")[0].onwheel = L, document.getElementsByTagName("canvas")[0].oncontextmenu = function (e) {
                             e.preventDefault()
                         }
-                    }(e), e.loader.add("sprites/ground.json").add("sprites/megagraveyard.png").add("sprites/graveyard.json").add("sprites/buildings.json").add("sprites/humans.json").add("sprites/cop.json").add("sprites/dogs.json").add("sprites/army.json").add("sprites/doctor.json").add("sprites/zombie.json").add("sprites/golem.json").add("sprites/bonecollector.json").add("sprites/harpy.json").add("sprites/objects2.json").add("sprites/fenceposts.json").add("sprites/trees2.json").add("sprites/fortress.json").add("sprites/tank.json").add("sprites/skeleton.json").add("sprites/biomassmonster.json").load((function () {
+                    }(e), e.loader.add("sprites/ground.json").add("sprites/megagraveyard.png").add("sprites/graveyard.json").add("sprites/buildings.json").add("sprites/humans.json").add("sprites/cop.json").add("sprites/dogs.json").add("sprites/army.json").add("sprites/doctor.json").add("sprites/zombie.json").add("sprites/golem.json").add("sprites/bonecollector.json").add("sprites/harpy.json").add("sprites/objects2.json").add("sprites/fenceposts.json").add("sprites/trees2.json").add("sprites/fortress.json").add("sprites/tank.json").add("sprites/skeleton.json").add("sprites/biomass.json").load((function () {
                         v.app = e, N(), x = new PIXI.TilingSprite(PIXI.Texture.from("grass.png")), x.texture.baseTexture.mipmap = PIXI.MIPMAP_MODES.OFF, x.width = P.x, x.height = P.y, u.addChild(x), v.setupLevel(), setTimeout((function () {
                             Z(!0)
                         })), e.ticker.add((t => {
@@ -3124,7 +3124,7 @@ var Incremancer;
     }
     class PPe extends Q {
         constructor() {
-            super(...arguments), this.currentDirection = 0, this.bulletReflect = 0, this.zombieId = 0, this.lastKnownBuilding = null, this.maxSpeed = 0, this.graveyard = !1, this.regenTimer = 0, this.bloodbornTimer = 0, this.level = 0, this.creatureType = 1, this.scaling = 0, this.attackDamage = 0, this.speedMultiplier = 1, this.price = 0, this.immuneToBurns = !1, this.biomass = !0, this.textureSet = {
+            super(...arguments), this.currentDirection = 0, this.bulletReflect = 0, this.zombieId = 0, this.lastKnownBuilding = null, this.maxSpeed = 0, this.graveyard = !1, this.regenTimer = 0, this.bloodbornTimer = 0, this.level = 0, this.creatureType = 0, this.scaling = 0, this.attackDamage = 0, this.speedMultiplier = 1, this.price = 0, this.immuneToBurns = !1, this.biomass = !0, this.textureSet = {
                 set: !1,
                 down: [],
                 up: [],
@@ -3176,7 +3176,7 @@ var Incremancer;
     }
     class EEe extends PPe {
         constructor() {
-            super(...arguments), this.flags = new Fe, this.mod = 1, this.scaleMod = 1, this.textureId = 1, this.turnTimer = 0
+            super(...arguments), this.flags = new Fe, this.mod = 1, this.scaleMod = 1, this.textureId = 0, this.turnTimer = 0
         }
     }
     class Ae {
@@ -3189,11 +3189,11 @@ var Incremancer;
                 for (let e = 0; e < 3; e++) {
                     const t = [];
                     for (let s = 0; s < 3; s++) t.push(PIXI.Texture.from("zombie" + (e + 1) + "_" + (s + 1) + ".png"));
-                    for (let s = 0; s < 3; s++) t.push(PIXI.Texture.from("biomassmonster" + (e + 1) + "_" + (s + 1) + ".png"));
+                    for (let s = 0; s < 3; s++) t.push(PIXI.Texture.from("biomass" + (e + 1) + "_" + (s + 1) + ".png"));
                     this.textures.push({
                         animated: t,
                         dead: [ 
-                            PIXI.Texture.from("BiomassMonster1_dead.png"),
+                            PIXI.Texture.from("biomass" + (e + 1) + "_dead.png"),
                             PIXI.Texture.from("zombie" + (e + 1) + "_dead.png")
                         ]
                     
@@ -3232,9 +3232,9 @@ var Incremancer;
         createBiomass(e, t, s = !1) {
             const i = Math.floor(Math.random() * this.textures.length);
             let b;
-            this.discardedZombies.length > 0 ? (b = this.discardedZombies.pop(), b.textures = s ? this.dogTexture : this.textures[i].animated) : b = new EEe(s ? this.dogTexture : this.textures[i].animated), b.biomass = !0, b.mod = 1, b.scaleMod = 1, this.super && (b.mod = 10, b.scaleMod = 1.5), b.flags = new Fe, b.flags.dog = s, b.flags.super = this.super, b.deadTexture = b.flags.dog ? this.deadDogTexture : this.textures[i].dead, b.textureId = i, b.burnDamage = 0, b.lastKnownBuilding = !1, b.alpha = 1, b.animationSpeed = .15, b.anchor.set(35 / 80, 1), b.position.set(e, t), b.target = null, b.zIndex = b.position.y, b.visible = !0, b.maxHealth = b.health = this.model.biomassHealth * b.mod, b.regenTimer = 5, b.state = be.lookingForTarget;
+            this.discardedZombies.length > 0 ? (b = this.discardedZombies.pop(), b.textures = s ? this.dogTexture : this.textures[i].animated) : b = new EEe(s ? this.dogTexture : this.textures[i].animated), b.biomass = !0, b.mod = 1, b.scaleMod = 1, this.super && (b.mod = 10, b.scaleMod = 1.5), b.flags = new Fe, b.flags.dog = s, b.flags.super = this.super, b.deadTexture = b.flags.dog ? this.deadDogTexture : this.textures[i].dead, b.textureId = i, b.burnDamage = 0, b.lastKnownBuilding = !1, b.alpha = 1, b.animationSpeed = .15, b.anchor.set(35 / 80, 1), b.position.set(e, t), b.target = null, b.zIndex = b.position.y, b.visible = !0, b.maxHealth = b.health = this.model.zombieHealth * b.mod, b.regenTimer = 5, b.state = be.lookingForTarget;
             const r = s ? .7 : 1;
-            b.scaling = b.scaleMod * this.scaling * r, b.scale.set(Math.random() > .5 ? b.scaling : -1 * b.scaling, b.scaling), b.timer.attack = 0, b.xSpeed = 0, b.ySpeed = 0, b.speedMultiplier = 1, b.timer.scan = 0, b.timer.burnTick = this.burnTickTimer, b.timer.smoke = this.smokeTimer, b.play(), b.zombieId = this.currId++, this.zombies.push(b), g.addChild(b), this.smoke.newZombieSpawnCloud(e, t - 2)
+            b.scaling = b.scaleMod * this.scaling * r, b.scale.set(Math.random() > .5 ? b.scaling : -1 * b.scaling, b.scaling), b.timer.attack = 0, b.xSpeed = 0, b.ySpeed = 0, b.speedMultiplier = 1, b.timer.scan = 0, b.timer.burnTick = this.burnTickTimer, b.timer.smoke = this.smokeTimer, b.play(), b.zombieId = this.currId++, this.biomasses.push(b), g.addChild(b), this.smoke.newZombieSpawnCloud(e, t - 2)
         }
         spawnZombie(e, t) {
             this.model.energy < this.model.zombieCost || (this.model.energy -= this.model.zombieCost, this.createZombie(e, t, !1))
