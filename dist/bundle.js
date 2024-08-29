@@ -4496,19 +4496,20 @@ var Incremancer;
                 d = Math.abs(h),
                 c = Math.abs(l);
             let u = 1 / Math.max(d, c);
-            u *= 1.29289 - (d + c) * u * .29289, o.xSpeed = h * u * this.speed, o.ySpeed = 1 * u * this.speed, o.rotation = Math.atan2(o.ySpeed, o.xSpeed)
+            u *= 1.29289 - (d + c) * u * .29289, o.xSpeed = h * u * this.speed, o.ySpeed = l * u * this.speed, o.rotation = Math.atan2(o.ySpeed, o.xSpeed)
             o.update = () => {
-            if (!o.target) return;
-                const dx = o.target.x - o.x;
-                const dy = o.target.y - 8 - o.y;
-                const angle = Math.atan2(dy, dx);
-                o.xSpeed = Math.cos(angle) * speed;
-                o.ySpeed = Math.sin(angle) * speed;
-                o.x += o.xSpeed;
-                o.y += o.ySpeed;
-                o.rotation = angle;
+            if (!o.target) return; // No target, can't home in
+            const dx = o.target.x - o.x;
+            const dy = o.target.y - 8 - o.y;
+            const angle = Math.atan2(dy, dx);
+            o.xSpeed = Math.cos(angle) * speed;
+            o.ySpeed = Math.sin(angle) * speed;
+            o.x += o.xSpeed;
+            o.y += o.ySpeed;
+            o.rotation = angle;
             }
         }
+    }
     class nt extends _ {
         constructor() {
             if (super(), this.viewableArea = null, nt.instance) return nt.instance;
