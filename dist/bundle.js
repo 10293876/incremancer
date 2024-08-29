@@ -2644,10 +2644,23 @@ var Incremancer;
         }
         updateDeadHumanFading(e, t) {
             if (e.visible) {
-                if (e.alpha > .5 && e.alpha - this.fadeSpeed * t <= .5 && !e.flags.tank && Math.random() < this.gameModel.riseFromTheDeadChance) return this.zombies.createZombie(e.x, e.y, e.flags.dog), e.visible = !1, void g.removeChild(e);
-                e.alpha -= this.fadeSpeed * t, e.alpha < 0 && (e.visible = !1, g.removeChild(e))
-                if (e.alpha > .5 && e.alpha - this.fadeSpeed * t <= .5 && !e.flags.tank && Math.random() < this.gameModel.biomassrisefromdead) return this.biomasses.createBiomass(e.x, e.y, e.flags.dog), e.visible = !1, void g.removeChild(e);
-                e.alpha -= this.fadeSpeed * t, e.alpha < 0 && (e.visible = !1, g.removeChild(e))
+                if (e.alpha > 0.5) {
+                    e.alpha -= this.fadeSpeed * t;
+                }
+                let zombieSpawned = false;
+                let biomassSpawned = false;
+                if (e.alpha <= 0.5 && e.flags.tank && Math.random() < this.gameModel.riseFromTheDeadChance) {
+                    this.zombies.createZombie(e.x, e.y, e.flags.dog);
+                    zombieSpawned = true;
+                }
+                if (e.alpha <= 0.5 && e.flags.tank && Math.random() < this.gameModel.biomassrisefromdead) {
+                    this.biomasses.createBiomass(e.x, e.y, e.flags.dog);
+                    biomassSpawned = true;
+                }
+                if (zombieSpawned || biomassSpawned) {
+                    e.visible = false;
+                    g.removeChild(e);
+                }
             }
         }
         changeState(e, t) {
