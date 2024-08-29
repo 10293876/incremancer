@@ -4495,10 +4495,8 @@ var Incremancer;
                 l = t.y - 8 - o.y,
                 d = Math.abs(h),
                 c = Math.abs(l);
-            let u = 1 / Math.max(d, c);
-            u *= 1.29289 - (d + c) * u * .29289, o.xSpeed = h * u * this.speed, o.ySpeed = l * u * this.speed, o.rotation = Math.atan2(o.ySpeed, o.xSpeed)
             o.update = () => {
-            if (!o.target) return; // No target, can't home in
+            if (!o.target) return; 
             const dx = o.target.x - o.x;
             const dy = o.target.y - 8 - o.y;
             const angle = Math.atan2(dy, dx);
