@@ -4496,7 +4496,6 @@ var Incremancer;
                 d = Math.abs(h),
                 c = Math.abs(l);
             o.update = () => {
-            if (!o.target) return; 
             const dx = o.target.x - o.x;
             const dy = o.target.y - 8 - o.y;
             const angle = Math.atan2(dy, dx);
@@ -4504,7 +4503,8 @@ var Incremancer;
             o.ySpeed = Math.sin(angle) * speed;
             o.x += o.xSpeed;
             o.y += o.ySpeed;
-            o.rotation = angle;
+            let u = 1 / Math.max(d, c);
+            u *= 1.29289 - (d + c) * u * .29289, o.xSpeed = h * u * this.speed, o.ySpeed = l * u * this.speed, o.rotation = angle
             }
         }
     }
