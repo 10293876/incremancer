@@ -3192,11 +3192,7 @@ var Incremancer;
                     for (let s = 0; s < 3; s++) t.push(PIXI.Texture.from("biomass" + (e + 1) + "_" + (s + 1) + ".png"));
                     this.textures.push({
                         animated: t,
-                        dead: [ 
-                            PIXI.Texture.from("biomass" + (e + 1) + "_dead.png"),
-                            PIXI.Texture.from("zombie" + (e + 1) + "_dead.png")
-                        ]
-                    
+                        dead: PIXI.Texture.from("zombie" + (e + 1) + "_dead.png")
                     })
                 }
                 for (let e = 0; e < 2; e++) this.dogTexture.push(PIXI.Texture.from("zombiedog" + (e + 1) + ".png"));
