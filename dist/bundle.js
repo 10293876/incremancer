@@ -3232,10 +3232,10 @@ var Incremancer;
         }
         createBiomass(e, t, s = !1) {
             const i = Math.floor(Math.random() * this.textures.length);
-            let a;
-            this.discardedBiomasses.length > 0 ? (a = this.discardedBiomasses.pop(), a.textures = s ? this.dogTexture : this.textures[i].animated) : a = new EEe(s ? this.dogTexture : this.textures[i].animated), a.biomass = !0, a.mod = 1, a.scaleMod = 1, this.super && (a.mod = 10, a.scaleMod = 1.5), a.flags = new Fe, a.flags.dog = s, a.flags.super = this.super, a.deadTexture = a.flags.dog ? this.deadDogTexture : this.textures[i].dead, a.textureId = i, a.burnDamage = 0, a.lastKnownBuilding = !1, a.alpha = 1, a.animationSpeed = .15, a.anchor.set(35 / 80, 1), a.position.set(e, t), a.target = null, a.zIndex = a.position.y, a.visible = !0, a.maxHealth = a.health = this.model.biomassHealth * a.mod, a.regenTimer = 5, a.state = be.lookingForTarget;
+            let b;
+            this.discardedBiomasses.length > 0 ? (b = this.discardedBiomasses.pop(), b.textures = s ? this.dogTexture : this.textures[i].animated) : b = new EEe(s ? this.dogTexture : this.textures[i].animated), b.biomass = !0, b.mod = 1, b.scaleMod = 1, this.super && (b.mod = 10, b.scaleMod = 1.5), b.flags = new Fe, b.flags.dog = s, b.flags.super = this.super, b.deadTexture = b.flags.dog ? this.deadDogTexture : this.textures[i].dead, b.textureId = i, b.burnDamage = 0, b.lastKnownBuilding = !1, b.alpha = 1, a.animationSpeed = .15, a.anchor.set(35 / 80, 1), a.position.set(e, t), a.target = null, a.zIndex = a.position.y, a.visible = !0, a.maxHealth = a.health = this.model.biomassHealth * a.mod, a.regenTimer = 5, a.state = be.lookingForTarget;
             const r = s ? .7 : 1;
-            a.scaling = a.scaleMod * this.scaling * r, a.scale.set(Math.random() > .5 ? a.scaling : -1 * a.scaling, a.scaling), a.timer.attack = 0, a.xSpeed = 0, a.ySpeed = 0, a.speedMultiplier = 1, a.timer.scan = 0, a.timer.burnTick = this.burnTickTimer, a.timer.smoke = this.smokeTimer, a.play(), a.biomassId = this.currId++, this.biomasses.push(a), g.addChild(a), this.smoke.newZombieSpawnCloud(e, t - 2)
+            b.scaling = b.scaleMod * this.scaling * r, b.scale.set(Math.random() > .5 ? b.scaling : -1 * b.scaling, b.scaling), b.timer.attack = 0, b.xSpeed = 0, b.ySpeed = 0, b.speedMultiplier = 1, b.timer.scan = 0, b.timer.burnTick = this.burnTickTimer, b.timer.smoke = this.smokeTimer, b.play(), b.biomassId = this.currId++, this.biomasses.push(b), g.addChild(b), this.smoke.newZombieSpawnCloud(e, t - 2)
         }
         spawnZombie(e, t) {
             this.model.energy < this.model.zombieCost || (this.model.energy -= this.model.zombieCost, this.createZombie(e, t, !1))
