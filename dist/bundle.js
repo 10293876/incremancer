@@ -3160,7 +3160,7 @@ var Incremancer;
                     const t = [];
                     const j = [];
                     for (let s = 0; s < 3; s++) t.push(PIXI.Texture.from("zombie" + (e + 1) + "_" + (s + 1) + ".png"));
-                    for (let s = 0; s < 3; s++) j.push(PIXI.Texture.from("biomass" + (e + 1) + "_" + (s + 1) + ".png"));
+                    for (let u = 0; u < 3; u++) j.push(PIXI.Texture.from("biomass" + (e + 1) + "_" + (u + 1) + ".png"));
                     this.textures.push({
                         animated: t,
                         animated: j,
@@ -3175,7 +3175,7 @@ var Incremancer;
                 this.discardedZombies = this.zombies.slice(), this.zombies.length = 0, this.aliveZombies.length = 0
             }
             if (this.biomasses.length > 0) {
-                for (let e = 0; e < this.biomasses.length; e++) g.removeChild(this.biomasses[e]), this.biomasses[e].stop();
+                for (let f = 0; f < this.biomasses.length; f++) g.removeChild(this.biomasses[f]), this.biomasses[f].stop();
                 this.discardedBiomasses = this.biomasses.slice(), this.biomasses.length = 0, this.aliveBiomasses.length = 0
             }
             if (!this.zombieCursor) {
