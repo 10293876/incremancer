@@ -2649,7 +2649,7 @@ var Incremancer;
             if (e.visible) {
                 if (e.alpha > .5 && e.alpha - this.fadeSpeed * t <= .5 && !e.flags.tank && Math.random() < this.gameModel.riseFromTheDeadChance) return this.zombies.createZombie(e.x, e.y, e.flags.dog), e.visible = !1, void g.removeChild(e);
                 e.alpha -= this.fadeSpeed * t, e.alpha < 0 && (e.visible = !1, g.removeChild(e))
-                else if (e.alpha > .5 && e.alpha - this.fadeSpeed * t <= .5 && !e.flags.tank && Math.random() < this.gameModel.biomassrisefromdead) return this.biomasses.createBiomass(e.x, e.y, e.flags.dog), e.visible = !1, void g.removeChild(e);
+                if (e.alpha > .5 && e.alpha - this.fadeSpeed * t <= .5 && !e.flags.tank && Math.random() < this.gameModel.biomassrisefromdead) return this.biomasses.createBiomass(e.x, e.y, e.flags.dog), e.visible = !1, void g.removeChild(e);
                 e.alpha -= this.fadeSpeed * t, e.alpha < 0 && (e.visible = !1, g.removeChild(e))
             }
         }
@@ -3151,7 +3151,7 @@ var Incremancer;
     }
     class Ae {
         constructor() {
-            if (this.zombies = [], this.discardedZombies = [], this.aliveZombies = [], this.aliveHumans = [], this.zombiePartition = [], this.scaling = 2, this.moveTargetDistance = 15, this.attackDistance = 15, this.attackSpeed = 3, this.targetDistance = 100, this.fadeSpeed = .1, this.refundChance = 0, this.currId = 1, this.scanTime = 3, this.textures = [], this.dogTexture = [], this.deadDogTexture = [], this.maxSpeed = 10, this.zombieCursor = null, this.zombieCursorText = null, this.zombieCursorScale = 3, this.mouseOutOfBounds = !1, this.burnTickTimer = 5, this.bloodpact = 1, this.bloodborn = 0, this.gigamutagen = 0, this.gigamutationTimer = 10, this.smokeTimer = .3, this.fastDistance = i, this.magnitude = t, this.detonate = !1, this.super = !1, this.reactionTime = 0, this.graveyardAttackers = [], this.spaceNeeded = 3, Ae.instance) return Ae.instance;
+            if (this.zombies = [], this.discardedZombies = [], this.discardedBiomasses = [], this.aliveZombies = [], this.aliveBiomasses = [], this.aliveHumans = [], this.zombiePartition = [], this.scaling = 2, this.moveTargetDistance = 15, this.attackDistance = 15, this.attackSpeed = 3, this.targetDistance = 100, this.fadeSpeed = .1, this.refundChance = 0, this.currId = 1, this.scanTime = 3, this.textures = [], this.dogTexture = [], this.deadDogTexture = [], this.maxSpeed = 10, this.zombieCursor = null, this.zombieCursorText = null, this.zombieCursorScale = 3, this.mouseOutOfBounds = !1, this.burnTickTimer = 5, this.bloodpact = 1, this.bloodborn = 0, this.gigamutagen = 0, this.gigamutationTimer = 10, this.smokeTimer = .3, this.fastDistance = i, this.magnitude = t, this.detonate = !1, this.super = !1, this.reactionTime = 0, this.graveyardAttackers = [], this.spaceNeeded = 3, Ae.instance) return Ae.instance;
             Ae.instance = this
         }
         populate() {
@@ -3173,6 +3173,10 @@ var Incremancer;
             if (this.zombies.length > 0) {
                 for (let e = 0; e < this.zombies.length; e++) g.removeChild(this.zombies[e]), this.zombies[e].stop();
                 this.discardedZombies = this.zombies.slice(), this.zombies.length = 0, this.aliveZombies.length = 0
+            }
+            if (this.biomasses.length > 0) {
+                for (let e = 0; e < this.biomasses.length; e++) g.removeChild(this.biomasses[e]), this.biomasses[e].stop();
+                this.discardedBiomasses = this.biomasses.slice(), this.biomasses.length = 0, this.aliveBiomasses.length = 0
             }
             if (!this.zombieCursor) {
                 this.zombieCursor = new PIXI.Container;
@@ -3200,7 +3204,7 @@ var Incremancer;
         createBiomass(e, t, s = !1) {
             const i = Math.floor(Math.random() * this.textures.length);
             let b;
-            this.discardedZombies.length > 0 ? (b = this.discardedZombies.pop(), b.textures = s ? this.dogTexture : this.textures[i].animated) : b = new Ee(s ? this.dogTexture : this.textures[i].animated), b.zombie = !0, b.mod = 1, b.scaleMod = 1, this.super && (b.mod = 10, b.scaleMod = 1.5), b.flags = new Fe, b.flags.dog = s, b.flags.super = this.super, b.deadTexture = b.flags.dog ? this.deadDogTexture : this.textures[i].dead, b.textureId = i, b.burnDamage = 0, b.lastKnownBuilding = !1, b.alpha = 1, b.animationSpeed = .15, b.anchor.set(35 / 80, 1), b.bloodbornTimer = this.bloodborn, b.position.set(e, t), b.target = null, b.zIndex = b.position.y, b.visible = !0, b.maxHealth = b.health = this.model.zombieHealth * b.mod, b.regenTimer = 5, b.state = be.lookingForTarget;            
+            this.discardedBiomasses.length > 0 ? (b = this.discardedBiomasses.pop(), b.textures = s ? this.dogTexture : this.textures[i].animated) : b = new Ee(s ? this.dogTexture : this.textures[i].animated), b.biomass = !0, b.mod = 1, b.scaleMod = 1, this.super && (b.mod = 10, b.scaleMod = 1.5), b.flags = new Fe, b.flags.dog = s, b.flags.super = this.super, b.deadTexture = b.flags.dog ? this.deadDogTexture : this.textures[i].dead, b.textureId = i, b.burnDamage = 0, b.lastKnownBuilding = !1, b.alpha = 1, b.animationSpeed = .15, b.anchor.set(35 / 80, 1), b.bloodbornTimer = this.bloodborn, b.position.set(e, t), b.target = null, b.zIndex = b.position.y, b.visible = !0, b.maxHealth = b.health = this.model.zombieHealth * b.mod, b.regenTimer = 5, b.state = be.lookingForTarget;            
             const r = s ? .7 : 1;
             b.scaling = b.scaleMod * this.scaling * r, b.scale.set(Math.random() > .5 ? b.scaling : -1 * b.scaling, b.scaling), b.timer.attack = 0, b.xSpeed = 0, b.ySpeed = 0, b.speedMultiplier = 1, b.timer.scan = 0, b.timer.burnTick = this.burnTickTimer, b.timer.smoke = this.smokeTimer, b.play(), b.zombieId = this.currId++, this.zombies.push(b), g.addChild(b), this.smoke.newZombieSpawnCloud(e, t - 2)
         }
@@ -3564,7 +3568,7 @@ var Incremancer;
         }
         spawnCreature() {
             let e;
-            this.discardedSprites.length > 0 ? (e = this.discardedSprites.pop(), e.textures = this.textures.down) : (e = new Le(this.textures.down), e.addChild(e.boneshieldContainer), e.boneshieldContainer.position.set(0, -16)), e.tint = 15658734, e.immuneToBurns = !1, e.bulletReflect = 0, e.zombie = !0, e.textureSet = this.textures, e.deadTexture = this.textures.dead, e.currentDirection = this.directions.down, e.flags = new K, e.burnDamage = 0, e.lastKnownBuilding = !1, e.alpha = 1, e.animationSpeed = .15, e.anchor.set(8.5 / 16, 1), e.position.set(this.graveyard.sprite.x, this.graveyard.sprite.y + (this.graveyard.level > 2 ? 8 : 0)), e.target = null, e.zIndex = e.position.y, e.visible = !0, e.maxHealth = e.health = 10 * this.model.zombieHealth, e.attackDamage = 10 * this.model.zombieDamage, e.regenTimer = 5, e.state = be.lookingForTarget, e.scaling = this.scaling, e.scale.set(e.scaling, e.scaling), e.timer.ability = 4 * Math.random(), e.timer.attack = 0, e.timer.scan = 0, e.timer.burnTick = this.burnTickTimer, e.timer.smoke = this.smokeTimer, e.xSpeed = 0, e.ySpeed = 0, e.speedMultiplier = 1, e.maxSpeed = this.moveSpeed, e.play(), e.zombieId = this.currId++, this.skeletons.push(e), g.addChild(e), this.smoke.newZombieSpawnCloud(e.x, e.y - 2)
+            this.discardedSprites.length > 0 ? (e = this.discardedSprites.pop(), e.textures = this.textures.down) : (e = new Le(this.textures.down), e.addChild(e.boneshieldContainer), e.boneshieldContainer.position.set(0, -16)), e.tint = 15658734, e.immuneToBurns = !1, e.bulletReflect = 0, e.zombie = !0, e.biomass = !0, e.textureSet = this.textures, e.deadTexture = this.textures.dead, e.currentDirection = this.directions.down, e.flags = new K, e.burnDamage = 0, e.lastKnownBuilding = !1, e.alpha = 1, e.animationSpeed = .15, e.anchor.set(8.5 / 16, 1), e.position.set(this.graveyard.sprite.x, this.graveyard.sprite.y + (this.graveyard.level > 2 ? 8 : 0)), e.target = null, e.zIndex = e.position.y, e.visible = !0, e.maxHealth = e.health = 10 * this.model.zombieHealth, e.attackDamage = 10 * this.model.zombieDamage, e.regenTimer = 5, e.state = be.lookingForTarget, e.scaling = this.scaling, e.scale.set(e.scaling, e.scaling), e.timer.ability = 4 * Math.random(), e.timer.attack = 0, e.timer.scan = 0, e.timer.burnTick = this.burnTickTimer, e.timer.smoke = this.smokeTimer, e.xSpeed = 0, e.ySpeed = 0, e.speedMultiplier = 1, e.maxSpeed = this.moveSpeed, e.play(), e.zombieId = this.currId++, this.skeletons.push(e), g.addChild(e), this.smoke.newZombieSpawnCloud(e.x, e.y - 2)
         }
         skeletonTimer() {
             return this.aliveSkeletons.length < this.persistent.skeletons ? this.spawnTimer : 0
