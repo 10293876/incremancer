@@ -1050,6 +1050,7 @@ var Incremancer;
                 this.frameRate = 0, 
                 this.humanCount = 50, 
                 this.zombieCount = 0, 
+                this.biomassCount = 0,
                 this.creatureCount = 0, 
                 this.creatureLimit = 1, 
                 this.harpySpeed = 75, 
@@ -1314,7 +1315,7 @@ var Incremancer;
             }
         }
         updateStats() {
-            this.stats && (this.stats.biomass.health = this.biomassHealth, this.stats.biomass.damage = this.biomassDamage, this.stats.biomass.speed = this.biomassSpeed, this.stats.zombie.health = this.zombieHealth, this.stats.zombie.damage = this.zombieDamage, this.stats.zombie.speed = this.zombieSpeed, this.stats.zombie.count = this.zombieCount, this.stats.skeleton.health = 10 * this.zombieHealth, this.stats.skeleton.damage = 10 * this.zombieDamage, this.stats.skeleton.speed = this.skeleton.moveSpeed)
+            this.stats && (this.stats.biomass.health = this.biomassHealth, this.stats.biomass.damage = this.biomassDamage, this.stats.biomass.speed = this.biomassSpeed, this.stats.biomass.count = this.biomassCount, this.stats.zombie.health = this.zombieHealth, this.stats.zombie.damage = this.zombieDamage, this.stats.zombie.speed = this.zombieSpeed, this.stats.zombie.count = this.zombieCount, this.stats.skeleton.health = 10 * this.zombieHealth, this.stats.skeleton.damage = 10 * this.zombieDamage, this.stats.skeleton.speed = this.skeleton.moveSpeed)
         }
         vipEscaped() {
             this.persistentData.vipEscaped || (this.persistentData.vipEscaped = []), this.persistentData.vipEscaped.push(this.level), this.saveData()
