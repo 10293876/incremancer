@@ -3111,17 +3111,6 @@ var Incremancer;
     } ! function (e) {
         e[e.lookingForTarget = 0] = "lookingForTarget", e[e.movingToTarget = 1] = "movingToTarget", e[e.attackingTarget = 2] = "attackingTarget"
     }(be || (be = {}));
-    class ze extends PIXI.Text {
-        constructor() {
-            super(...arguments), this.speed = 30, this.fadeTime = .5
-        }
-        updateCritText(e) {
-            this.visible && (this.y -= this.speed * e, this.fadeTime -= e, this.fadeTime < 0 && (this.alpha -= 2 * e, this.alpha < 0 && (this.visible = !1, Re.push(this))))
-        }
-        reset() {
-            this.fadeTime = .5, this.alpha = 1, this.visible = !0
-        }
-    }
     class PPe extends Q {
         constructor() {
             super(...arguments), this.currentDirection = 0, this.bulletReflect = 0, this.biomassId = 0, this.lastKnownBuilding = null, this.maxSpeed = 0, this.graveyard = !1, this.regenTimer = 0, this.bloodbornTimer = 0, this.level = 0, this.creatureType = 0, this.scaling = 0, this.attackDamage = 0, this.speedMultiplier = 1, this.price = 0, this.immuneToBurns = !1, this.biomass = !0, this.textureSet = {
@@ -3133,8 +3122,8 @@ var Incremancer;
                 dead: []
             }
         }
-    } ! function (e) {
-        e[e.lookingForTarget = 0] = "lookingForTarget", e[e.movingToTarget = 1] = "movingToTarget", e[e.attackingTarget = 2] = "attackingTarget"
+    } ! function (f) {
+        f[f.lookingForTarget = 0] = "lookingForTarget", f[f.movingToTarget = 1] = "movingToTarget", f[f.attackingTarget = 2] = "attackingTarget"
     }(be || (be = {}));
     class ze extends PIXI.Text {
         constructor() {
