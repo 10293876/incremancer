@@ -3174,7 +3174,7 @@ var Incremancer;
             super(...arguments), this.flags = new Fe, this.mod = 1, this.scaleMod = 1, this.textureId = 0, this.turnTimer = 0
         }
     }
-    class EEe extends Pe {
+    class EEe extends PPe {
         constructor() {
             super(...arguments), this.flags = new Fe, this.mod = 1, this.scaleMod = 1, this.textureId = 1, this.turnTimer = 0
         }
