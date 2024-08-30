@@ -1007,6 +1007,9 @@ var Incremancer;
                 this.brainsPCMod = 1, 
                 this.brainsStorePCMod = 1, 
                 this.zombieHealth = 100, 
+                this.biomassHealth = 1000,
+                this.biomassDamage = 100,
+                this.biomassSpeed = 100,
                 this.zombieHealthPCMod = 1, 
                 this.HshellHealthPCMod = 1, 
                 this.CyroVatPCMod = 1, 
@@ -1286,6 +1289,11 @@ var Incremancer;
                     damage: this.zombieDamage,
                     speed: this.zombieSpeed
                 },
+                biomass: {
+                    health: this.biomassHealth,
+                    damage: this.biomassDamage,
+                    speed: this.biomassSpeed
+                },
                 human: {
                     health: this.humans.getMaxHealth(this.level),
                     damage: this.humans.attackDamage,
@@ -1306,7 +1314,7 @@ var Incremancer;
             }
         }
         updateStats() {
-            this.stats && (this.stats.zombie.health = this.zombieHealth, this.stats.zombie.damage = this.zombieDamage, this.stats.zombie.speed = this.zombieSpeed, this.stats.zombie.count = this.zombieCount, this.stats.skeleton.health = 10 * this.zombieHealth, this.stats.skeleton.damage = 10 * this.zombieDamage, this.stats.skeleton.speed = this.skeleton.moveSpeed)
+            this.stats && (this.stats.biomass.health = this.biomassHealth, this.stats.biomass.damage = this.biomassDamage, this.stats.biomass.speed = this.biomassSpeed, this.stats.zombie.health = this.zombieHealth, this.stats.zombie.damage = this.zombieDamage, this.stats.zombie.speed = this.zombieSpeed, this.stats.zombie.count = this.zombieCount, this.stats.skeleton.health = 10 * this.zombieHealth, this.stats.skeleton.damage = 10 * this.zombieDamage, this.stats.skeleton.speed = this.skeleton.moveSpeed)
         }
         vipEscaped() {
             this.persistentData.vipEscaped || (this.persistentData.vipEscaped = []), this.persistentData.vipEscaped.push(this.level), this.saveData()
@@ -2644,34 +2652,10 @@ var Incremancer;
         }
         updateDeadHumanFading(e, t) {
             if (e.visible) {
-                if (e.alpha > 0.5) {
-                    e.alpha -= this.fadeSpeed * t;
-                }
-            
-                let zombieSpawned = false;
-                let biomassSpawned = false;
-            
-                // Check for spawning a zombie
-                if (e.alpha <= 0.5 && e.flags.tank && Math.random() < this.gameModel.riseFromTheDeadChance) {
-                    this.zombies.createZombie(e.x, e.y, e.flags.dog);
-                    zombieSpawned = true;
-                }
-            
-                // Check for spawning a biomass
-                if (e.alpha <= 0.5 && e.flags.tank && Math.random() < this.gameModel.biomassrisefromdead) {
-                    this.biomasses.createBiomass(e.x, e.y, e.flags.dog);
-                    biomassSpawned = true;
-                }
-            
-                // Remove the entity if the alpha is fully faded out
-                if (e.alpha <= 0) {
-                    e.visible = false;
-                    g.removeChild(e);
-                } else if (zombieSpawned || biomassSpawned) {
-                    // Also remove the entity if either was spawned
-                    e.visible = false;
-                    g.removeChild(e);
-                }
+                if (e.alpha > .5 && e.alpha - this.fadeSpeed * t <= .5 && !e.flags.tank && Math.random() < this.gameModel.riseFromTheDeadChance) return this.zombies.createZombie(e.x, e.y, e.flags.dog), e.visible = !1, void g.removeChild(e);
+                e.alpha -= this.fadeSpeed * t, e.alpha < 0 && (e.visible = !1, g.removeChild(e))
+                if (e.alpha > .5 && e.alpha - this.fadeSpeed * t <= .5 && !e.flags.tank && Math.random() < this.gameModel.biomassrisefromdead) return this.biomasses.createBiomass(e.x, e.y, e.flags.dog), e.visible = !1, void g.removeChild(e);
+                e.alpha -= this.fadeSpeed * t, e.alpha < 0 && (e.visible = !1, g.removeChild(e))
             }
         }
         changeState(e, t) {
@@ -3179,10 +3163,12 @@ var Incremancer;
             if (this.map = new ee, this.model = ne.getInstance(), this.humans = new Se, this.graveyard = new Oe, this.creatureFactory = new ae, this.smoke = new ot, this.blood = new _e, this.bones = new tt, this.exclamations = new it, this.blasts = new nt, this.bullets = new rt, this.model.zombieCount = 0, 0 == this.textures.length) {
                 for (let e = 0; e < 3; e++) {
                     const t = [];
+                    const j = [];
                     for (let s = 0; s < 3; s++) t.push(PIXI.Texture.from("zombie" + (e + 1) + "_" + (s + 1) + ".png"));
                     for (let s = 0; s < 3; s++) t.push(PIXI.Texture.from("biomass" + (e + 1) + "_" + (s + 1) + ".png"));
                     this.textures.push({
                         animated: t,
+                        animated: j,
                         dead: PIXI.Texture.from("zombie" + (e + 1) + "_dead.png")
                     })
                 }
