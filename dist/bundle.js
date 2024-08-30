@@ -3179,14 +3179,14 @@ var Incremancer;
                     const t = [];
                     const j = [];
                     for (let e = 0; e < 3; e++) {
-                        t.push(PIXI.Texture.from("zombie" + (e + 1) + "-" + (s + 1) + ".png"));
+                        t.push(PIXI.Texture.from("zombie" + (e + 1) + "_" + (s + 1) + ".png"));
                     }
                     this.textures.push({
                         animated: t,
                         dead: [PIXI.Texture.from("zombie" + (e + 1) + "_dead.png")]
                     });
-                for (let e = 0; e < 3; e++) {
-                        u.push(PIXI.Texture.from("biomass" + (e + 1) + "-" + (u + 1) + ".png"));
+                    for (let e = 0; e < 3; e++) {
+                        u.push(PIXI.Texture.from("biomass" + (e + 1) + "_" + (u + 1) + ".png"));
                     }
                     this.textures.push({
                         animated: u,
