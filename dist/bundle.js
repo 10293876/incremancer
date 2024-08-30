@@ -3192,13 +3192,7 @@ var Incremancer;
                     this.textures.push({
                         animated: t,
                         dead: [PIXI.Texture.from("zombie" + (e + 1) + "_dead.png")]
-                    });
-                    const j = [];
-                    for (let u = 0; u < 3; u++) j.push(PIXI.Texture.from("biomass" + (e + 1) + "_" + (u + 1) + ".png"));
-                    this.textures.push({
-                        animated: u,
-                        dead: [PIXI.Texture.from("biomass" + (e + 1) + "_dead.png")]
-                    });
+                    })
                 }
                 for (let e = 0; e < 2; e++) this.dogTexture.push(PIXI.Texture.from("zombiedog" + (e + 1) + ".png"));
                 this.deadDogTexture = [PIXI.Texture.from("zombiedogdead.png")]
@@ -3206,10 +3200,6 @@ var Incremancer;
             if (this.zombies.length > 0) {
                 for (let e = 0; e < this.zombies.length; e++) g.removeChild(this.zombies[e]), this.zombies[e].stop();
                 this.discardedZombies = this.zombies.slice(), this.zombies.length = 0, this.aliveZombies.length = 0
-            }
-            if (this.biomasses.length > 0) {
-                for (let f = 0; f < this.biomasses.length; f++) g.removeChild(this.biomasses[f]), this.biomasses[f].stop();
-                this.discardedBiomasses = this.biomasses.slice(), this.biomasses.length = 0, this.aliveBiomasses.length = 0
             }
             if (!this.zombieCursor) {
                 this.zombieCursor = new PIXI.Container;
