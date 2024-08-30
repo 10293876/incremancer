@@ -3175,7 +3175,7 @@ var Incremancer;
         }
         populate() {
             if (this.map = new ee, this.model = ne.getInstance(), this.humans = new Se, this.graveyard = new Oe, this.creatureFactory = new ae, this.smoke = new ot, this.blood = new _e, this.bones = new tt, this.exclamations = new it, this.blasts = new nt, this.bullets = new rt, this.model.zombieCount = 0, 0 == this.textures.length) {
-                for (let e = 0; e < 3; e++){
+                for (let e = 0; e < 3; e++) {
                     const t = [];
                     const j = [];
                     for (let s = 0; s < 3; s++) t.push(PIXI.Texture.from("zombie" + (e + 1) + "_" + (s + 1) + ".png"));
@@ -3183,7 +3183,7 @@ var Incremancer;
                         animated: t,
                         dead: [PIXI.Texture.from("zombie" + (e + 1) + "_dead.png")]
                     });
-                    for (let s = 0; s < 3; s++) j.push(PIXI.Texture.from("biomass" + (e + 1) + "_" + (u + 1) + ".png"));
+                    for (let u = 0; u < 3; u++) j.push(PIXI.Texture.from("biomass" + (e + 1) + "_" + (u + 1) + ".png"));
                     this.textures.push({
                         animated: u,
                         dead: [PIXI.Texture.from("biomass" + (e + 1) + "_dead.png")]
