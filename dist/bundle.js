@@ -200,7 +200,7 @@ var Incremancer;
                         }), y = new PIXI.Sprite(f), y.visible = !1, y.alpha = 0, m.addChild(y), c.addChild(u), c.addChild(p), c.addChild(g), c.addChild(b), e.stage.addChild(c), e.stage.addChild(m), c.interactive = !0, c.interactiveChildren = !1, c.on("pointerdown", z), c.on("pointerup", I), c.on("pointerupoutside", I), c.on("pointermove", H), c.on("click", E), c.on("tap", E), document.getElementsByTagName("canvas")[0].onwheel = L, document.getElementsByTagName("canvas")[0].oncontextmenu = function (e) {
                             e.preventDefault()
                         }
-                    }(e), e.loader.add("sprites/ground.json").add("sprites/megagraveyard.png").add("sprites/graveyard.json").add("sprites/buildings.json").add("sprites/humans.json").add("sprites/cop.json").add("sprites/dogs.json").add("sprites/army.json").add("sprites/doctor.json").add("sprites/zombie.json").add("sprites/golem.json").add("sprites/bonecollector.json").add("sprites/harpy.json").add("sprites/objects2.json").add("sprites/fenceposts.json").add("sprites/trees2.json").add("sprites/fortress.json").add("sprites/tank.json").add("sprites/skeleton.json").add("sprites/.json").load((function () {
+                    }(e), e.loader.add("sprites/ground.json").add("sprites/megagraveyard.png").add("sprites/graveyard.json").add("sprites/buildings.json").add("sprites/humans.json").add("sprites/cop.json").add("sprites/dogs.json").add("sprites/army.json").add("sprites/doctor.json").add("sprites/zombie.json").add("sprites/golem.json").add("sprites/bonecollector.json").add("sprites/harpy.json").add("sprites/objects2.json").add("sprites/fenceposts.json").add("sprites/trees2.json").add("sprites/fortress.json").add("sprites/tank.json").add("sprites/skeleton.json").add("sprites/biomass.json").load((function () {
                         v.app = e, N(), x = new PIXI.TilingSprite(PIXI.Texture.from("grass.png")), x.texture.baseTexture.mipmap = PIXI.MIPMAP_MODES.OFF, x.width = P.x, x.height = P.y, u.addChild(x), v.setupLevel(), setTimeout((function () {
                             Z(!0)
                         })), e.ticker.add((t => {
@@ -368,7 +368,7 @@ var Incremancer;
     }
     class Q extends PIXI.AnimatedSprite {
         constructor(e) {
-            super(e), this.xSpeed = 0, this.ySpeed = 0, this.health = 0, this.maxHealth = 0, this.zombie = !1, this. = !1, this.targetVector = {
+            super(e), this.xSpeed = 0, this.ySpeed = 0, this.health = 0, this.maxHealth = 0, this.zombie = !1, this.biomass = !1, this.targetVector = {
                 x: 0,
                 y: 0
             }, this.burnDamage = 0, this.hasIcon = !1, this.flags = new K, this.timer = new $
@@ -1007,9 +1007,9 @@ var Incremancer;
                 this.brainsPCMod = 1, 
                 this.brainsStorePCMod = 1, 
                 this.zombieHealth = 100, 
-                this.Health = 1000,
-                this.Damage = 100,
-                this.Speed = 100,
+                this.biomassHealth = 1000,
+                this.biomassDamage = 100,
+                this.biomassSpeed = 100,
                 this.zombieHealthPCMod = 1, 
                 this.HshellHealthPCMod = 1, 
                 this.CyroVatPCMod = 1, 
@@ -1055,7 +1055,7 @@ var Incremancer;
                 this.harpySpeed = 75, 
                 this.tankBuster = !1, 
                 this.homingdarkorb = !1,
-                this.risefromdead = 0,
+                this.biomassrisefromdead = 0,
                 this.harpyBombs = 1, 
                 this.stats = null, 
                 this.runicSyphon = {
@@ -1204,7 +1204,7 @@ var Incremancer;
                 this.bulletproofChance = 0, 
                 this.gigazombies = !1, 
                 this.harpySpeed = 75, 
-                this.risefromdead = 0,
+                this.biomassrisefromdead = 0,
                 this.tankBuster = !1,
                 this.homingdarkorb = !1
                 this.harpyBombs = 1
@@ -1550,7 +1550,7 @@ var Incremancer;
                 HstrengthDmgPC: "HstrengthDmgPC",
                 HshellHealthPC: "HshellHealthPC",
                 homingdarkorb: "homingdarkorb",
-                risefromdead: "risefromdead",
+                biomassrisefromdead: "biomassrisefromdead",
                 CyroVatPC: "CyroVatPC",
                 PlagueVatPC: "PlagueVatPC",
                 CloningRep1PC: "CloningRep1PC",
@@ -1800,7 +1800,7 @@ var Incremancer;
                                  new le(61, "Big Boned", this.types.golemHealthPC, this.costs.parts, 1e3, 1.31, .02, 0, "Your golems gain +2% health with each rank of Big Boned.", null, 220),
                                  new le(62, "Hybrid Strength", this.types.HstrengthDmgPC, this.costs.parts, 1e3, 1.3, .01, 0, "Animating Golem parts fused with zombie flesh creates a terrifyingly strong Hybrid. Your zombies gain +1% damage with each rank of Hybrid Strength.", null, 301),
                                  new le(63, "Hybrid Shell", this.types.HshellHealthPC, this.costs.parts, 1e3, 1.31, .01, 0, "Golem armor shell provides extra protection for your fleshy zombies. Your zombies gain +1% health with each rank of Hybrid Shell.", null, 301),
-                                 new le(64, " Monsters", this.types.risefromdead, this.costs.blood, 1e9, 1.4, .01, 10, "The flesh and blood of countless humans merge together to create this horrifying amalgamation.  monsters will now have a 1% chance to spawn from human corpses if you have at least 200 zombies.", null, 301),
+                                 new le(64, "Biomass Monsters", this.types.biomassrisefromdead, this.costs.blood, 1e9, 1.4, .01, 10, "The flesh and blood of countless humans merge together to create this horrifying amalgamation.  monsters will now have a 1% chance to spawn from human corpses if you have at least 200 zombies.", null, 301),
                                  new le(65, "Darkorb Homing", this.types.homingdarkorb, this.costs.bones, 1e10, 1.2, 1, 1, "The Skeleton's darkorb will now pursue its targets.", null, 301),
                                  new le(66, "Advanced Cyrogenic Vats", this.types.CyroVatPC, this.costs.parts, 1e3, 1.4, .1, 0, "Cooling these Brains further makes them last much longer. Your brain storage increases +10% with each rank of Advanced Cyrogenic Vats.", null, 302),
                                  new le(67, "Golem Part Plague Vats", this.types.PlagueVatPC, this.costs.brains, 1e3, 1.35, .01, 0, "Using specialized Golem Parts allows for advancements in plague research. Plague Damage increases +1% with each rank of Golem Part Plague Vats.", null, 302),
@@ -1882,8 +1882,8 @@ var Incremancer;
                     return void (this.gameModel.brainRecoverChance += e.effect * t);
                 case this.types.riseFromTheDeadChance:
                     return void (this.gameModel.riseFromTheDeadChance += e.effect * t);
-                case this.types.risefromdead:
-                    return void (this.gameModel.risefromdead += e.effect * t);
+                case this.types.biomassrisefromdead:
+                    return void (this.gameModel.biomassrisefromdead += e.effect * t);
                 case this.types.infectedBite:
                     return void (this.gameModel.infectedBiteChance += e.effect * t);
                 case this.types.infectedBlast:
@@ -2150,8 +2150,8 @@ var Incremancer;
                     return this.currentRank(e) > 0 ? "You have unlocked tank buster" : "You have yet to unlock tank buster";
                 case this.types.homingdarkorb:
                     return this.currentRank(e) > 0 ? "You have unlocked homing darkorb" : "You have yet to unlock homing darkorb";
-                case this.types.risefromdead:
-                    return Math.round(100 * this.gameModel.risefromdead) + "% chance for human corpses to turn into  monsters";
+                case this.types.biomassrisefromdead:
+                    return Math.round(100 * this.gameModel.biomassrisefromdead) + "% chance for human corpses to turn into  monsters";
                 case this.types.spikeDelay:
                     return "Current spike delay: " + (5 - this.currentRank(e)) + " seconds"
             }
@@ -2593,7 +2593,7 @@ var Incremancer;
             }), this.vipText.anchor.set(.5, 1), this.vipText.scale.x = .25, this.vipText.scale.y = .25, b.addChild(this.vipText)), this.vipText.visible = !0, this.vipText.human = e, this.vipText.yOffset = -20, this.vipText.x = e.x, this.vipText.y = e.y + this.vipText.yOffset
         }
         populate() {
-            if (this.map = new ee, this.zombies = new Ae, this.es = new Ae, this.gameModel = ne.getInstance(), this.blood = new _e, this.smoke = new ot, this.bones = new tt, this.skeleton = new Xe, this.blasts = new nt, this.fragments = new lt, this.trophies = new de, this.exclamations = new it, this.bullets = new rt, this.police = new ke, this.army = new Te, this.tanks = new De, this.map.populatePois(), 0 == this.textures.length)
+            if (this.map = new ee, this.zombies = new Ae, this.biomasses = new Ae, this.gameModel = ne.getInstance(), this.blood = new _e, this.smoke = new ot, this.bones = new tt, this.skeleton = new Xe, this.blasts = new nt, this.fragments = new lt, this.trophies = new de, this.exclamations = new it, this.bullets = new rt, this.police = new ke, this.army = new Te, this.tanks = new De, this.map.populatePois(), 0 == this.textures.length)
                 for (let e = 0; e < 6; e++) {
                     const t = [];
                     for (let s = 0; s < 3; s++) t.push(PIXI.Texture.from("human" + (e + 1) + "_" + (s + 1) + ".png"));
@@ -2649,7 +2649,7 @@ var Incremancer;
             if (e.visible) {
                 if (e.alpha > .5 && e.alpha - this.fadeSpeed * t <= .5 && !e.flags.tank && Math.random() < this.gameModel.riseFromTheDeadChance) return this.zombies.createZombie(e.x, e.y, e.flags.dog), e.visible = !1, void g.removeChild(e);
                 e.alpha -= this.fadeSpeed * t, e.alpha < 0 && (e.visible = !1, g.removeChild(e))
-                if (e.alpha > .5 && e.alpha - this.fadeSpeed * t <= .5 && !e.flags.tank && Math.random() < this.gameModel.risefromdead) return this.biomasses.createBiomass(e.x, e.y, e.flags.dog), e.visible = !1, void g.removeChild(e);
+                if (e.alpha > .5 && e.alpha - this.fadeSpeed * t <= .5 && !e.flags.tank && Math.random() < this.gameModel.biomassrisefromdead) return this.biomasses.createBiomass(e.x, e.y, e.flags.dog), e.visible = !1, void g.removeChild(e);
                 e.alpha -= this.fadeSpeed * t, e.alpha < 0 && (e.visible = !1, g.removeChild(e))
             }
         }
