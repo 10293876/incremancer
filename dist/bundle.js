@@ -3122,6 +3122,31 @@ var Incremancer;
             this.fadeTime = .5, this.alpha = 1, this.visible = !0
         }
     }
+    class PPe extends Q {
+        constructor() {
+            super(...arguments), this.currentDirection = 0, this.bulletReflect = 0, this.biomassId = 0, this.lastKnownBuilding = null, this.maxSpeed = 0, this.graveyard = !1, this.regenTimer = 0, this.bloodbornTimer = 0, this.level = 0, this.creatureType = 1, this.scaling = 0, this.attackDamage = 0, this.speedMultiplier = 1, this.price = 0, this.immuneToBurns = !1, this.biomass = !0, this.textureSet = {
+                set: !1,
+                down: [],
+                up: [],
+                left: [],
+                right: [],
+                dead: []
+            }
+        }
+    } ! function (e) {
+        e[e.lookingForTarget = 0] = "lookingForTarget", e[e.movingToTarget = 1] = "movingToTarget", e[e.attackingTarget = 2] = "attackingTarget"
+    }(be || (be = {}));
+    class ze extends PIXI.Text {
+        constructor() {
+            super(...arguments), this.speed = 30, this.fadeTime = .5
+        }
+        updateCritText(e) {
+            this.visible && (this.y -= this.speed * e, this.fadeTime -= e, this.fadeTime < 0 && (this.alpha -= 2 * e, this.alpha < 0 && (this.visible = !1, Re.push(this))))
+        }
+        reset() {
+            this.fadeTime = .5, this.alpha = 1, this.visible = !0
+        }
+    }
     const Ie = new PIXI.TextStyle({
         fill: "#ef0",
         fontSize: 64
@@ -3149,6 +3174,11 @@ var Incremancer;
             super(...arguments), this.flags = new Fe, this.mod = 1, this.scaleMod = 1, this.textureId = 0, this.turnTimer = 0
         }
     }
+    class EEe extends Pe {
+        constructor() {
+            super(...arguments), this.flags = new Fe, this.mod = 1, this.scaleMod = 1, this.textureId = 1, this.turnTimer = 0
+        }
+    }  
     class Ae {
         constructor() {
             if (this.zombies = [], this.discardedZombies = [], this.biomasses = [], this.discardedBiomasses = [], this.aliveZombies = [], this.aliveBiomasses = [], this.aliveHumans = [], this.zombiePartition = [], this.scaling = 2, this.moveTargetDistance = 15, this.attackDistance = 15, this.attackSpeed = 3, this.targetDistance = 100, this.fadeSpeed = .1, this.refundChance = 0, this.currId = 1, this.scanTime = 3, this.textures = [], this.dogTexture = [], this.deadDogTexture = [], this.maxSpeed = 10, this.zombieCursor = null, this.zombieCursorText = null, this.zombieCursorScale = 3, this.mouseOutOfBounds = !1, this.burnTickTimer = 5, this.bloodpact = 1, this.bloodborn = 0, this.gigamutagen = 0, this.gigamutationTimer = 10, this.smokeTimer = .3, this.fastDistance = i, this.magnitude = t, this.detonate = !1, this.super = !1, this.reactionTime = 0, this.graveyardAttackers = [], this.spaceNeeded = 3, Ae.instance) return Ae.instance;
@@ -3204,7 +3234,7 @@ var Incremancer;
         createBiomass(e, t, s = !1) {
             const i = Math.floor(Math.random() * this.textures.length);
             let b;
-            this.discardedBiomasses.length > 0 ? (b = this.discardedBiomasses.pop(), b.textures = s ? this.dogTexture : this.textures[i].animated) : b = new Ee(s ? this.dogTexture : this.textures[i].animated), b.biomass = !0, b.mod = 1, b.scaleMod = 1, this.super && (b.mod = 10, b.scaleMod = 1.5), b.flags = new Fe, b.flags.dog = s, b.flags.super = this.super, b.deadTexture = b.flags.dog ? this.deadDogTexture : this.textures[i].dead, b.textureId = i, b.burnDamage = 0, b.lastKnownBuilding = !1, b.alpha = 1, b.animationSpeed = .15, b.anchor.set(35 / 80, 1), b.bloodbornTimer = this.bloodborn, b.position.set(e, t), b.target = null, b.zIndex = b.position.y, b.visible = !0, b.maxHealth = b.health = this.model.biomassHealth * b.mod, b.regenTimer = 5, b.state = be.lookingForTarget;            
+            this.discardedBiomasses.length > 0 ? (b = this.discardedBiomasses.pop(), b.textures = s ? this.dogTexture : this.textures[i].animated) : b = new EEe(s ? this.dogTexture : this.textures[i].animated), b.biomass = !0, b.mod = 1, b.scaleMod = 1, this.super && (b.mod = 10, b.scaleMod = 1.5), b.flags = new Fe, b.flags.dog = s, b.flags.super = this.super, b.deadTexture = b.flags.dog ? this.deadDogTexture : this.textures[i].dead, b.textureId = i, b.burnDamage = 0, b.lastKnownBuilding = !1, b.alpha = 1, b.animationSpeed = .15, b.anchor.set(35 / 80, 1), b.bloodbornTimer = this.bloodborn, b.position.set(e, t), b.target = null, b.zIndex = b.position.y, b.visible = !0, b.maxHealth = b.health = this.model.biomassHealth * b.mod, b.regenTimer = 5, b.state = be.lookingForTarget;            
             const r = s ? .7 : 1;
             b.scaling = b.scaleMod * this.scaling * r, b.scale.set(Math.random() > .5 ? b.scaling : -1 * b.scaling, b.scaling), b.timer.attack = 0, b.xSpeed = 0, b.ySpeed = 0, b.speedMultiplier = 1, b.timer.scan = 0, b.timer.burnTick = this.burnTickTimer, b.timer.smoke = this.smokeTimer, b.play(), b.biomassId = this.currId++, this.biomasses.push(b), g.addChild(b), this.smoke.newZombieSpawnCloud(e, t - 2)
         }
