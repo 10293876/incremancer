@@ -3176,7 +3176,7 @@ var Incremancer;
     }
     class EEe extends PPe {
         constructor() {
-            super(...arguments), this.flags = new Fe, this.mod = 1, this.scaleMod = 1, this.textureId = 1, this.turnTimer = 0
+            super(...arguments), this.flags = new Fe, this.mod = 1, this.scaleMod = 1, this.textureId = 0, this.turnTimer = 0
         }
     }  
     class Ae {
@@ -3193,8 +3193,8 @@ var Incremancer;
                     for (let u = 0; u < 3; u++) j.push(PIXI.Texture.from("biomass" + (e + 1) + "_" + (u + 1) + ".png"));
                     this.textures.push({
                         animated: t,
-                        animated: j,
                         dead: [PIXI.Texture.from("zombie" + (e + 1) + "_dead.png")],
+                        animated: j,
                         dead: [PIXI.Texture.from("biomass" + (e + 1) + "_dead.png")]
                     })
                 }
