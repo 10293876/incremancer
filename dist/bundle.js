@@ -3141,7 +3141,7 @@ var Incremancer;
     }
     class PPe extends Q {
         constructor() {
-            super(...arguments), this.currentDirection = 0, this.bulletReflect = 0, this.biomassId = 1, this.lastKnownBuilding = null, this.maxSpeed = 0, this.graveyard = !1, this.regenTimer = 0, this.bloodbornTimer = 0, this.level = 0, this.creatureType = 1, this.scaling = 0, this.attackDamage = 0, this.speedMultiplier = 1, this.price = 0, this.immuneToBurns = !1, this.biomass = !0, this.textureSet = {
+            super(...arguments), this.currentDirection = 0, this.bulletReflect = 0, this.biomassId = 0, this.lastKnownBuilding = null, this.maxSpeed = 0, this.graveyard = !1, this.regenTimer = 0, this.bloodbornTimer = 0, this.level = 0, this.creatureType = 0, this.scaling = 0, this.attackDamage = 0, this.speedMultiplier = 1, this.price = 0, this.immuneToBurns = !1, this.biomass = !0, this.textureSet = {
                 set: !1,
                 down: [],
                 up: [],
