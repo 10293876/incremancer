@@ -3111,21 +3111,7 @@ var Incremancer;
     } ! function (e) {
         e[e.lookingForTarget = 0] = "lookingForTarget", e[e.movingToTarget = 1] = "movingToTarget", e[e.attackingTarget = 2] = "attackingTarget"
     }(be || (be = {}));
-    class PPe extends Q {
-        constructor() {
-            super(...arguments), this.currentDirection = 0, this.bulletReflect = 0, this.biomassId = 1, this.lastKnownBuilding = null, this.maxSpeed = 0, this.graveyard = !1, this.regenTimer = 0, this.bloodbornTimer = 0, this.level = 0, this.creatureType = 1, this.scaling = 0, this.attackDamage = 0, this.speedMultiplier = 1, this.price = 0, this.immuneToBurns = !1, this.biomass = !0, this.textureSet = {
-                set: !1,
-                down: [],
-                up: [],
-                left: [],
-                right: [],
-                dead: []
-            }
-        }
-    } ! function (f) {
-        f[f.lookingForTarget = 0] = "lookingForTarget", f[f.movingToTarget = 1] = "movingToTarget", f[f.attackingTarget = 2] = "attackingTarget"
-    }(be || (be = {}));
-    class ze extends PIXI.Text {
+        class ze extends PIXI.Text {
         constructor() {
             super(...arguments), this.speed = 30, this.fadeTime = .5
         }
@@ -3153,6 +3139,20 @@ var Incremancer;
                 b.addChild(i), i.position.set(e, t), i.anchor.set(.5, 1), i.scale.set(.2, .2), Be.push(i)
             }
     }
+    class PPe extends Q {
+        constructor() {
+            super(...arguments), this.currentDirection = 0, this.bulletReflect = 0, this.biomassId = 1, this.lastKnownBuilding = null, this.maxSpeed = 0, this.graveyard = !1, this.regenTimer = 0, this.bloodbornTimer = 0, this.level = 0, this.creatureType = 1, this.scaling = 0, this.attackDamage = 0, this.speedMultiplier = 1, this.price = 0, this.immuneToBurns = !1, this.biomass = !0, this.textureSet = {
+                set: !1,
+                down: [],
+                up: [],
+                left: [],
+                right: [],
+                dead: []
+            }
+        }
+    } ! function (f) {
+        f[f.lookingForTarget = 0] = "lookingForTarget", f[f.movingToTarget = 1] = "movingToTarget", f[f.attackingTarget = 2] = "attackingTarget"
+    }(be || (be = {}));
     class Fe extends K {
         constructor() {
             super(...arguments), this.dog = !1, this.super = !1
