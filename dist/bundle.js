@@ -3165,7 +3165,7 @@ var Incremancer;
     }
     class EEe extends PPe {
         constructor() {
-            super(...arguments), this.flags = new Fe, this.mod = 1, this.scaleMod = 1, this.textureId = 0, this.turnTimer = 0
+            super(...arguments), this.flags = new Fe, this.mod = 1, this.scaleMod = 1, this.textureId = 1, this.turnTimer = 0
         }
     }  
     class Ae {
@@ -3223,12 +3223,12 @@ var Incremancer;
             const r = s ? .7 : 1;
             a.scaling = a.scaleMod * this.scaling * r, a.scale.set(Math.random() > .5 ? a.scaling : -1 * a.scaling, a.scaling), a.timer.attack = 0, a.xSpeed = 0, a.ySpeed = 0, a.speedMultiplier = 1, a.timer.scan = 0, a.timer.burnTick = this.burnTickTimer, a.timer.smoke = this.smokeTimer, a.play(), a.zombieId = this.currId++, this.zombies.push(a), g.addChild(a), this.smoke.newZombieSpawnCloud(e, t - 2)
         }
-        createBiomass(e, t, s = !1) {
+        createBiomass(e, t, p = !1) {
             const i = Math.floor(Math.random() * this.textures.length);
             let b;
-            this.discardedBiomasses.length > 0 ? (b = this.discardedBiomasses.pop(), b.textures = s ? this.dogTexture : this.textures[i].animated) : b = new EEe(s ? this.dogTexture : this.textures[i].animated), b.biomass = !0, b.mod = 1, b.scaleMod = 1, this.super && (b.mod = 10, b.scaleMod = 1.5), b.flags = new Fe, b.flags.dog = s, b.flags.super = this.super, b.deadTexture = b.flags.dog ? this.deadDogTexture : this.textures[i].dead, b.textureId = i, b.burnDamage = 0, b.lastKnownBuilding = !1, b.alpha = 1, b.animationSpeed = .15, b.anchor.set(35 / 80, 1), b.bloodbornTimer = this.bloodborn, b.position.set(e, t), b.target = null, b.zIndex = b.position.y, b.visible = !0, b.maxHealth = b.health = this.model.biomassHealth * b.mod, b.regenTimer = 5, b.state = be.lookingForTarget;            
-            const r = s ? .7 : 1;
-            b.scaling = b.scaleMod * this.scaling * r, b.scale.set(Math.random() > .5 ? b.scaling : -1 * b.scaling, b.scaling), b.timer.attack = 0, b.xSpeed = 0, b.ySpeed = 0, b.speedMultiplier = 1, b.timer.scan = 0, b.timer.burnTick = this.burnTickTimer, b.timer.smoke = this.smokeTimer, b.play(), b.biomassId = this.currId++, this.biomasses.push(b), g.addChild(b), this.smoke.newZombieSpawnCloud(e, t - 2)
+            this.discardedBiomasses.length > 0 ? (b = this.discardedBiomasses.pop(), b.textures = p ? this.dogTexture : this.textures[i].animated) : b = new EEe(s ? this.dogTexture : this.textures[i].animated), b.biomass = !0, b.mod = 1, b.scaleMod = 1, this.super && (b.mod = 10, b.scaleMod = 1.5), b.flags = new Fe, b.flags.dog = s, b.flags.super = this.super, b.deadTexture = b.flags.dog ? this.deadDogTexture : this.textures[i].dead, b.textureId = i, b.burnDamage = 0, b.lastKnownBuilding = !1, b.alpha = 1, b.animationSpeed = .15, b.anchor.set(35 / 80, 1), b.bloodbornTimer = this.bloodborn, b.position.set(e, t), b.target = null, b.zIndex = b.position.y, b.visible = !0, b.maxHealth = b.health = this.model.biomassHealth * b.mod, b.regenTimer = 5, b.state = be.lookingForTarget;            
+            const r = p ? .7 : 1;
+            b.scaling = b.scaleMod * this.scaling * r, b.scale.set(Math.random() > .5 ? b.scaling : -1 * b.scaling, b.scaling), b.timer.attack = 0, b.xSpeed = 0, b.ySpeed = 0, b.speedMultiplier = 1, b.timer.scan = 0, b.timer.burnTick = this.burnTickTimer, b.timer.smoke = this.smokeTimer, b.play(), b.biomassId = this.currId++, this.biomasses.push(b), g.addChild(b), this.smoke.newBiomassSpawnCloud(e, t - 2)
         }
         spawnZombie(e, t) {
             this.model.energy < this.model.zombieCost || (this.model.energy -= this.model.zombieCost, this.createZombie(e, t, !1))
@@ -4608,7 +4608,7 @@ var Incremancer;
         }
         newCloud(e, t) {
             if (this.container.visible) {
-                this.tint = 65280;
+                this.tint = 10158352;
                 for (let s = 0; s < 10; s++) this.newSmoke(e, t, 16)
             }
         }
@@ -4621,6 +4621,12 @@ var Incremancer;
         newZombieSpawnCloud(e, t) {
             if (this.container.visible) {
                 this.tint = 65280;
+                for (let s = 0; s < 5; s++) this.newSmoke(e, t, 6)
+            }
+        }
+        newBiomassSpawnCloud(e, t) {
+            if (this.container.visible) {
+                this.tint = ;
                 for (let s = 0; s < 5; s++) this.newSmoke(e, t, 6)
             }
         }
