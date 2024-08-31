@@ -3183,12 +3183,6 @@ var Incremancer;
                         animated: t,
                         dead: [PIXI.Texture.from("zombie" + (e + 1) + "_dead.png")]
                     });
-                    for (let u = 0; u < 3; u++) j.push(PIXI.Texture.from("biomass" + (e + 1) + "_" + (u + 1) + ".png"));
-                    this.textures.push({
-                        animated: u,
-                        dead: [PIXI.Texture.from("biomass" + (e + 1) + "_dead.png")]
-                    });
-                }
                 for (let e = 0; e < 2; e++) this.dogTexture.push(PIXI.Texture.from("zombiedog" + (e + 1) + ".png"));
                 this.deadDogTexture = [PIXI.Texture.from("zombiedogdead.png")]
             }
